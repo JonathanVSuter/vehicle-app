@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "guTciaI/R6l/0r/r+hBHawXglkxaZKr6EHU8BDKX7+5WChQpE0FIspjRGoOV0nbYMhj+5ZNluKif2ILNIQ4GCA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Application\\VeiculosApp.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jonathan.suter\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

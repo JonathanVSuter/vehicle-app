@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "VeiculosApp.Core.Common/1.0.0": {
+        "runtime": {
+          "VeiculosApp.Core.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VeiculosApp.Core.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

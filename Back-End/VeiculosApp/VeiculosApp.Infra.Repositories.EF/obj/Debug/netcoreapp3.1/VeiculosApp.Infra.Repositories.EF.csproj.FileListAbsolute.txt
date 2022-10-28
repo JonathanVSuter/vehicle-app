@@ -1,0 +1,15 @@
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\bin\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.deps.json
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\bin\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.runtimeconfig.json
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\bin\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.runtimeconfig.dev.json
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\bin\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.dll
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\bin\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.pdb
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\bin\Debug\netcoreapp3.1\VeiculosApp.Core.Domain.dll
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\bin\Debug\netcoreapp3.1\VeiculosApp.Core.Domain.pdb
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\obj\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.csprojAssemblyReference.cache
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\obj\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.AssemblyInfoInputs.cache
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\obj\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.AssemblyInfo.cs
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\obj\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.csproj.CoreCompileInputs.cache
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\obj\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.csproj.CopyComplete
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\obj\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.dll
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\obj\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.pdb
+C:\Users\jonathan.suter\source\repos\VeiculosApp\VeiculosApp.Infra.Repositories.EF\obj\Debug\netcoreapp3.1\VeiculosApp.Infra.Repositories.EF.genruntimeconfig.cache
