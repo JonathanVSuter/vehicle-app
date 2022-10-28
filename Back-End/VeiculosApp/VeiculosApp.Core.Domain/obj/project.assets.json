@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj",
       "projectName": "VeiculosApp.Core.Domain",
-      "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj",
+      "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj",
       "packagesPath": "C:\\Users\\jonathan.suter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Core.Domain\\obj\\",
+      "outputPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

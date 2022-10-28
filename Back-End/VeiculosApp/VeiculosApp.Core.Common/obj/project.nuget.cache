@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WwHerGQniFvw6k3kLyruyYuJA5/Te/Gs9gfasgJESGRVA5r/5NBP1YxDKKhidPN/JcQiWJ8wk4hsozJVRtRu8A==",
+  "dgSpecHash": "amP3TXYz99qRe/OR6/azqA92rqhaYCEf85ygZvhEfI8jCG0Cmowk7kZBAsoFo/HmF8VNUOFAktVVzGl0jHXS4Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Core.Common\\VeiculosApp.Core.Common.csproj",
+  "projectFilePath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Common\\VeiculosApp.Core.Common.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -34,11 +34,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj",
+      "projectUniqueName": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj",
       "projectName": "VeiculosApp.Infra.Repositories",
-      "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj",
+      "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj",
       "packagesPath": "C:\\Users\\jonathan.suter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Infra.Repositories\\obj\\",
+      "outputPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -64,8 +64,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj": {
-              "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj"
+            "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj": {
+              "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj"
             }
           }
         }

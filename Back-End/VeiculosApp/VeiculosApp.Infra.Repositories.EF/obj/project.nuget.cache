@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r3d3Em6i/TpCT9Pjb17/KIHzW3G/+zVHsk85K2vg0DKZ5mVj+xN/9jpwoSatdF6a5g2ELhpORCeIvA+f2YuZjQ==",
+  "dgSpecHash": "9TEL2ui77COxYwBm6Ga4NOQA/YE7TU5+3AeCEY2XzF8lRLCFF06mT3BKhX95JXhmM9L8aJaU2EWfrWIP7okSsA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jonathan.suter\\source\\repos\\VeiculosApp\\VeiculosApp.Infra.Repositories.EF\\VeiculosApp.Infra.Repositories.EF.csproj",
+  "projectFilePath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories.EF\\VeiculosApp.Infra.Repositories.EF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonathan.suter\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\jonathan.suter\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
