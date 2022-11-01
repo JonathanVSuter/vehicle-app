@@ -10,8 +10,8 @@ using VeiculosApp.Infra.Repositories.EF;
 namespace VeiculosApp.Infra.Repositories.EF.Migrations
 {
     [DbContext(typeof(AppVehiclesDbContext))]
-    [Migration("20221028012243_AddAnnouncementValueToAnnoucement")]
-    partial class AddAnnouncementValueToAnnoucement
+    [Migration("20221101061241_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,11 +31,20 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
                     b.Property<double>("AnnouncedValue")
                         .HasColumnType("float");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("IdUser")
                         .HasColumnType("int");
 
                     b.Property<int>("IdVehicle")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -43,7 +52,7 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
 
                     b.HasIndex("IdVehicle");
 
-                    b.ToTable("Announcement");
+                    b.ToTable("Announcements");
                 });
 
             modelBuilder.Entity("VeiculosApp.Core.Domain.Models.User", b =>
@@ -53,8 +62,14 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -65,9 +80,12 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("VeiculosApp.Core.Domain.Models.Vehicle", b =>
@@ -80,15 +98,56 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
                     b.Property<string>("Brand")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vehicles");
+                });
+
+            modelBuilder.Entity("VeiculosApp.Core.Domain.Models.VehicleImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdVehicle")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("Photo")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Vehicles");
+                    b.HasIndex("IdVehicle");
+
+                    b.ToTable("VehicleImages");
                 });
 
             modelBuilder.Entity("VeiculosApp.Core.Domain.Models.Announcement", b =>
@@ -100,12 +159,23 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
                         .IsRequired();
 
                     b.HasOne("VeiculosApp.Core.Domain.Models.Vehicle", "Vehicle")
-                        .WithMany("Announcement")
+                        .WithMany("Announcements")
                         .HasForeignKey("IdVehicle")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
+
+                    b.Navigation("Vehicle");
+                });
+
+            modelBuilder.Entity("VeiculosApp.Core.Domain.Models.VehicleImage", b =>
+                {
+                    b.HasOne("VeiculosApp.Core.Domain.Models.Vehicle", "Vehicle")
+                        .WithMany("VehicleImages")
+                        .HasForeignKey("IdVehicle")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Vehicle");
                 });
@@ -117,7 +187,9 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
 
             modelBuilder.Entity("VeiculosApp.Core.Domain.Models.Vehicle", b =>
                 {
-                    b.Navigation("Announcement");
+                    b.Navigation("Announcements");
+
+                    b.Navigation("VehicleImages");
                 });
 #pragma warning restore 612, 618
         }
