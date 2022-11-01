@@ -2,7 +2,7 @@
 
 namespace VeiculosApp.Core.Domain.Repositories
 {
-    public interface IVehiclesRepository : IBaseRepository<Vehicle>
+    public interface IVehicleRepository : IBaseRepository<Vehicle>
     {
     }
 }

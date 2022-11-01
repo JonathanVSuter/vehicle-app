@@ -2,9 +2,8 @@
 
 namespace VeiculosApp.Core.Domain.Models
 {
-    public class Vehicle : IModel
-    {
-        public int Id { get; set; }
+    public class Vehicle : BaseModel
+    {       
         public string Name { get; set; }
         public string Brand { get; set; }
         public byte[] Photo { get; set; }

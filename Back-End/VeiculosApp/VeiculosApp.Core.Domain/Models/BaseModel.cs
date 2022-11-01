@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace VeiculosApp.Core.Domain.Models
 {
-    public interface IModel
+    public class BaseModel : IModel
     {
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; }

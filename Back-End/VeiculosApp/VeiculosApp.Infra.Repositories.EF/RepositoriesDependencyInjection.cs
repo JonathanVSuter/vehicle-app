@@ -10,7 +10,7 @@ namespace VeiculosApp.Infra.Repositories.EF
         public static void AddRepositories(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
             serviceCollection.AddDbContext<AppVehiclesDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("VehiclesDb")));
-            serviceCollection.AddScoped<IVehiclesRepository, VehiclesRepository>();
+            serviceCollection.AddScoped<IVehicleRepository, VehicleRepository>();
         }
     }
 }

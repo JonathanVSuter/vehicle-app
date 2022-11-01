@@ -9,7 +9,7 @@ namespace VeiculosApp.Core.Domain.Repositories
         T Update(T model);
         bool Remove(T model);
         IEnumerable<T> GetAll();
-        T GetById(int id);
+        abstract T GetById(int id);
         IEnumerable<T> GetBy(string term);
     }
 }

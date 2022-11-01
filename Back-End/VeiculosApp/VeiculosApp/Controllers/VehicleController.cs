@@ -8,12 +8,12 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     [ApiController]
     public class VehicleController : ControllerBase
     {
-        private readonly IVehiclesRepository _vehiclesRepository;
-        public VehicleController(IVehiclesRepository vehiclesRepository) 
+        private readonly IVehicleRepository _vehiclesRepository;
+        public VehicleController(IVehicleRepository vehiclesRepository) 
         {
             _vehiclesRepository = vehiclesRepository;
         }

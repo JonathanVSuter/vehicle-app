@@ -5,7 +5,7 @@ using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Repositories
 {
-    interface IAnnouncementRepository : IBaseRepository<Announcement>
+    public interface IAnnouncementRepository : IBaseRepository<Announcement>
     {
     }
 }

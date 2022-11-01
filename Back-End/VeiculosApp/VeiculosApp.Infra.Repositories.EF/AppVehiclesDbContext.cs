@@ -5,6 +5,8 @@ namespace VeiculosApp.Infra.Repositories.EF
 {
     public class AppVehiclesDbContext : DbContext
     {
+        public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public AppVehiclesDbContext(DbContextOptions<AppVehiclesDbContext> dbContextOptions) : base(dbContextOptions) { }
 

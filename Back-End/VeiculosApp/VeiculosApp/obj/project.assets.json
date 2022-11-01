@@ -2488,12 +2488,11 @@
       ]
     },
     "System.Collections.NonGeneric/4.3.0": {
-      "sha512": "prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
+      "sha512": "LE/oChpRvkSi3U25u0KnJcI44JeDZ1QJCyN4qFDx2uusEypdqR24w7lKYw21eYe5esuCBuc862wRmpF63Yy1KQ==",
       "type": "package",
       "path": "system.collections.nongeneric/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4790,12 +4789,11 @@
       ]
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
-      "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
+      "sha512": "2Z5t70a2SwMsfQDp9KOclaZNyQhfIga2gppq9lIUDM1A4ohTshn4JqT7ir8bvIhXgorWKYDAr6rPzEbi/nTGKg==",
       "type": "package",
       "path": "system.runtime.serialization.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -5786,12 +5784,11 @@
       ]
     },
     "System.Xml.XmlSerializer/4.3.0": {
-      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
+      "sha512": "VShQJhOxgD/5M2Z1IWm1vMaSqlbjo1zdFf8H7Ahte6bTvSUhUko/gDpAVVhGgGgTDeue4QyNg1fu1Zz2GKSEuQ==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -5885,25 +5882,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jonathan.suter\\.nuget\\packages\\": {},
+    "C:\\Users\\jonat\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp\\VeiculosApp.csproj",
+      "projectUniqueName": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp\\VeiculosApp.csproj",
       "projectName": "VeiculosApp",
-      "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp\\VeiculosApp.csproj",
-      "packagesPath": "C:\\Users\\jonathan.suter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp\\obj\\",
+      "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp\\VeiculosApp.csproj",
+      "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+      "outputPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jonathan.suter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -5912,21 +5911,18 @@
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Nugets\\multilog-packages": {},
-        "C:\\Nugets\\nugets\\netstandard2.0": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://multilogdevops.pkgs.visualstudio.com/_packaging/packages-multilog/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Application\\VeiculosApp.Application.csproj": {
-              "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Application\\VeiculosApp.Application.csproj"
+            "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Application\\VeiculosApp.Application.csproj": {
+              "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Application\\VeiculosApp.Application.csproj"
             },
-            "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories.EF\\VeiculosApp.Infra.Repositories.EF.csproj": {
-              "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories.EF\\VeiculosApp.Infra.Repositories.EF.csproj"
+            "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories.EF\\VeiculosApp.Infra.Repositories.EF.csproj": {
+              "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories.EF\\VeiculosApp.Infra.Repositories.EF.csproj"
             }
           }
         }
@@ -5966,7 +5962,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.215\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
       }
     }
   }

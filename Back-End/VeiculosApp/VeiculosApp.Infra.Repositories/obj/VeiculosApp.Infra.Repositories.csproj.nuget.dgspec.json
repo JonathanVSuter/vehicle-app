@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj": {}
+    "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj": {
+    "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj",
+        "projectUniqueName": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj",
         "projectName": "VeiculosApp.Core.Domain",
-        "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj",
-        "packagesPath": "C:\\Users\\jonathan.suter\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\obj\\",
+        "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj",
+        "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jonathan.suter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -27,11 +28,8 @@
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Nugets\\multilog-packages": {},
-          "C:\\Nugets\\nugets\\netstandard2.0": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://multilogdevops.pkgs.visualstudio.com/_packaging/packages-multilog/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -63,25 +61,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.215\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj": {
+    "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj",
+        "projectUniqueName": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj",
         "projectName": "VeiculosApp.Infra.Repositories",
-        "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj",
-        "packagesPath": "C:\\Users\\jonathan.suter\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\obj\\",
+        "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\VeiculosApp.Infra.Repositories.csproj",
+        "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Infra.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jonathan.suter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -90,18 +89,15 @@
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Nugets\\multilog-packages": {},
-          "C:\\Nugets\\nugets\\netstandard2.0": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://multilogdevops.pkgs.visualstudio.com/_packaging/packages-multilog/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj": {
-                "projectPath": "C:\\Users\\jonathan.suter\\source\\repos\\veiculos-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj"
+              "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj": {
+                "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj"
               }
             }
           }
@@ -130,7 +126,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.215\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
         }
       }
     }
