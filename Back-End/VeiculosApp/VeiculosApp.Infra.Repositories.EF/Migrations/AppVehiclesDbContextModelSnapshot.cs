@@ -126,7 +126,7 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdVehicle")
+                    b.Property<int?>("IdVehicle")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
@@ -171,9 +171,7 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
                 {
                     b.HasOne("VeiculosApp.Core.Domain.Models.Vehicle", "Vehicle")
                         .WithMany("VehicleImages")
-                        .HasForeignKey("IdVehicle")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdVehicle");
 
                     b.Navigation("Vehicle");
                 });

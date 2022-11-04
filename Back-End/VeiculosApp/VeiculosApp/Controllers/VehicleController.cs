@@ -1,10 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VeiculosApp.Core.Common.Command;
+using VeiculosApp.Core.Common.Query;
+using VeiculosApp.Core.Domain.Commands;
+using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
+using VeiculosApp.Core.Domain.Queries;
 using VeiculosApp.Core.Domain.Repositories;
 using VeiculosApp.ViewModels.Vehicle;
 
@@ -15,22 +21,31 @@ namespace VeiculosApp.Controllers
     public class VehicleController : ControllerBase
     {
         private readonly IVehicleRepository _vehiclesRepository;
-        public VehicleController(IVehicleRepository vehiclesRepository)
+        private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IQueryExecutor _queryExecutor;
+        private readonly IMapper _mapper;
+
+        public VehicleController(IVehicleRepository vehiclesRepository, ICommandDispatcher commandDispatcher, IMapper mapper, IQueryExecutor queryExecutor)
         {
             _vehiclesRepository = vehiclesRepository;
+            _commandDispatcher = commandDispatcher;
+            _mapper = mapper;
+            _queryExecutor = queryExecutor;
         }
 
         [HttpDelete()]
         public IActionResult Remove([FromQuery]int id)
         {
-            var a = _vehiclesRepository.GetAll();
+            var commandRemove = new RemoveVehicleCommand(id);
+            _commandDispatcher.Dispatch(commandRemove);
 
-            return Ok(new { success = true, result = a });
+            return NoContent();            
         }
 
         [HttpPut()]
         public IActionResult Update([FromBody] UpdateVehicleViewModel updateVehicleViewModel)
         {
+
             var a = _vehiclesRepository.GetAll();
 
             return Ok(new { success = true, result = a });
@@ -39,19 +54,66 @@ namespace VeiculosApp.Controllers
         [HttpPost()]
         public IActionResult Save([FromBody] SaveVehicleViewModel saveVehicleViewModel)
         {
-            var vehicleDto = saveVehicleViewModel.Vehicle;
+            var vehicle = _mapper.Map<Vehicle>(saveVehicleViewModel.Vehicle);
+            var images = _mapper.Map<List<VehicleImage>>(saveVehicleViewModel.VehicleImages);
 
-            var a = _vehiclesRepository.Add(new Vehicle() { Brand = vehicleDto.Brand, IsActive = true, Name = vehicleDto.Name, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now });
+            var command = new SaveVehicleCommand(vehicle);
+            var savedVehicle = _commandDispatcher.Dispatch<SaveVehicleCommand, Vehicle>(command);
 
-            return Ok(new { success = true, result = a });
+            if (images.Any()) 
+            {
+                var commandSaveVehicleImages = new SaveVehicleImageCommand(savedVehicle.Id, images);
+                _commandDispatcher.Dispatch(commandSaveVehicleImages);                
+            }
+            
+            return CreatedAtAction(nameof(VehicleController.Save), nameof(VehicleController));
         }
 
         [HttpGet()]        
+        [Route("getby")]
         public IActionResult GetBy([FromQuery]string term)
         {
-            var a = _vehiclesRepository.GetBy(term);
+            var query = new GetByVehicleQuery(term);
 
-            return Ok(new { success = true, result = a });
-        }        
+            var vehicles = _queryExecutor.Execute<GetByVehicleQuery, IList<Vehicle>>(query);
+
+            if(vehicles != null && vehicles.Any())
+            {
+                var result = _mapper.Map<IList<VehicleDto>>(vehicles);
+                return Ok(new {result});
+            }
+            return NoContent();
+        }
+
+        [HttpGet()]        
+        public IActionResult GetAll()
+        {
+            var query = new GetAllVehicleQuery();
+
+            var vehicles = _queryExecutor.Execute<GetAllVehicleQuery, IList<Vehicle>>(query);
+
+            if(vehicles != null && vehicles.Any())
+            {
+                var result = _mapper.Map<IList<VehicleDto>>(vehicles);
+
+                return Ok(new { result });
+            }
+            return NoContent();           
+        }
+
+        [HttpGet()]
+        [Route("getbyid")]
+        public IActionResult GetById([FromQuery] int id)
+        {
+            var query = new GetByIdVehicleQuery(id);
+            var vehicle = _queryExecutor.Execute<GetByIdVehicleQuery, Vehicle>(query);
+
+            if(vehicle!= null) 
+            {
+                var result = _mapper.Map<VehicleDto>(vehicle);
+                return Ok(new {result});
+            }
+            return NoContent();            
+        }
     }
 }

@@ -1539,9 +1539,22 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "VeiculosApp.Core.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/VeiculosApp.Core.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VeiculosApp.Core.Common.dll": {}
+        }
+      },
       "VeiculosApp.Core.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "VeiculosApp.Core.Common": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/VeiculosApp.Core.Domain.dll": {}
         },
@@ -5840,6 +5853,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "VeiculosApp.Core.Common/1.0.0": {
+      "type": "project",
+      "path": "../VeiculosApp.Core.Common/VeiculosApp.Core.Common.csproj",
+      "msbuildProject": "../VeiculosApp.Core.Common/VeiculosApp.Core.Common.csproj"
     },
     "VeiculosApp.Core.Domain/1.0.0": {
       "type": "project",

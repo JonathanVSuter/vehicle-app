@@ -18,8 +18,4 @@
     <ProjectReference Include="..\VeiculosApp.Core.Domain\VeiculosApp.Core.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

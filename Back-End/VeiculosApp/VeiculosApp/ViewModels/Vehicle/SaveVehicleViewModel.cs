@@ -1,9 +1,11 @@
-﻿using VeiculosApp.Core.Domain.Dtos;
+﻿using System.Collections.Generic;
+using VeiculosApp.Core.Domain.Dtos;
 
 namespace VeiculosApp.ViewModels.Vehicle
 {
-    public class SaveVehicleViewModel    {
-        
+    public class SaveVehicleViewModel    
+    {
         public VehicleDto Vehicle { get; set; }
+        public IList<VehicleImageDto> VehicleImages { get; set; }
     }
 }

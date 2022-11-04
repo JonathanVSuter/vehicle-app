@@ -18,6 +18,7 @@ namespace VeiculosApp.Infra.Repositories.EF
                 {
                     e.HasKey(x => x.Id);
                     e.HasMany(x => x.Announcements).WithOne(y => y.Vehicle).HasForeignKey(z => z.IdVehicle);
+                    e.HasMany(x => x.VehicleImages).WithOne(y => y.Vehicle).HasForeignKey(z => z.IdVehicle);
                 })
                 .Entity<User>(e =>
                 {
@@ -33,7 +34,7 @@ namespace VeiculosApp.Infra.Repositories.EF
                 .Entity<VehicleImage>(e=> 
                 {
                     e.HasKey(x=> x.Id);
-                    e.HasOne(x => x.Vehicle).WithMany(y => y.VehicleImages).HasForeignKey(z => z.IdVehicle);
+                    e.HasOne(x => x.Vehicle).WithMany(y => y.VehicleImages).HasForeignKey(z => z.IdVehicle);                    
                 });                
 
             base.OnModelCreating(modelBuilder);

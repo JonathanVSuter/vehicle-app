@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using VeiculosApp.Core.Domain.Dtos;
+using VeiculosApp.Core.Domain.Mapping;
 
 namespace VeiculosApp.Core.Domain.Models
 {

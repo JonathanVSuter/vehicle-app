@@ -4,6 +4,6 @@ namespace VeiculosApp.ViewModels.Vehicle
 {
     public class UpdateVehicleViewModel
     {        
-        public VehicleDto Vehicle { get; set; }
+        public VehicleDto Vehicle { get; set; }        
     }
 }

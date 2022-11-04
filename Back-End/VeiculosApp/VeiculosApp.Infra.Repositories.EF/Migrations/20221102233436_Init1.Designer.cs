@@ -10,8 +10,8 @@ using VeiculosApp.Infra.Repositories.EF;
 namespace VeiculosApp.Infra.Repositories.EF.Migrations
 {
     [DbContext(typeof(AppVehiclesDbContext))]
-    [Migration("20221101061241_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221102233436_Init1")]
+    partial class Init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -128,7 +128,7 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdVehicle")
+                    b.Property<int?>("IdVehicle")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
@@ -173,9 +173,7 @@ namespace VeiculosApp.Infra.Repositories.EF.Migrations
                 {
                     b.HasOne("VeiculosApp.Core.Domain.Models.Vehicle", "Vehicle")
                         .WithMany("VehicleImages")
-                        .HasForeignKey("IdVehicle")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdVehicle");
 
                     b.Navigation("Vehicle");
                 });

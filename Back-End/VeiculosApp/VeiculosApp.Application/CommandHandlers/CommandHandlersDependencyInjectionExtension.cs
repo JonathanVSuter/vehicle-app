@@ -1,4 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using VeiculosApp.Core.Common.Command;
+using VeiculosApp.Core.Domain.Commands;
+using VeiculosApp.Core.Domain.Dtos;
+using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
@@ -6,8 +11,9 @@ namespace VeiculosApp.Application.CommandHandlers
     {
         public static void AddCommandHandlers(this IServiceCollection services)
         {
-            //services.AddScoped<ICommandHandlerWithResult<GuardarDadosCidadesCommand, IList<CidadeCommandDto>>, GuardarDadosCidadesCommandHandler>();
-            //services.AddTransient<ICommandHandler<GuardarDadosClimaTempoCommand>, GuardarDadosClimaTempoUmaSemanaCommandHandler>();
+            services.AddScoped<ICommandHandlerWithResult<SaveVehicleCommand, Vehicle>, AddVehicleCommandHandler>();
+            services.AddScoped<ICommandHandler<SaveVehicleImageCommand>, SaveVehicleImageCommandHandler>();
+            services.AddScoped<ICommandHandler<RemoveVehicleCommand>, RemoveVehicleCommandHandler>();
         }
     }
 }

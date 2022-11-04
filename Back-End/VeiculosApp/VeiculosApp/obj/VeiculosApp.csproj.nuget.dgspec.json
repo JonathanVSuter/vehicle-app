@@ -37,6 +37,9 @@
             "projectReferences": {
               "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Common\\VeiculosApp.Core.Common.csproj": {
                 "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Common\\VeiculosApp.Core.Common.csproj"
+              },
+              "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj": {
+                "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj"
               }
             }
           }
@@ -166,7 +169,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Common\\VeiculosApp.Core.Common.csproj": {
+                "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Common\\VeiculosApp.Core.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -332,15 +339,19 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.17, )"
             },
-            "Swashbuckle.AspNetCore.Swagger": {
+            "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.4.1, )"
+              "version": "[6.2.3, )"
             }
           },
           "imports": [

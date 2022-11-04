@@ -3,8 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 using VeiculosApp.Application;
+using VeiculosApp.Application.CommandHandlers;
+using VeiculosApp.Application.QueryHandlers;
 using VeiculosApp.Infra.Repositories.EF;
+using VeiculosApp.Profiles;
 
 namespace VeiculosApp
 {
@@ -17,15 +21,17 @@ namespace VeiculosApp
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddRepositories(Configuration);
             services.AddExecutors();
+            services.AddSwaggerGen();
+            services.AddCommandHandlers();
+            services.AddQueryHandlers();
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(VehicleProfile)));            
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -36,6 +42,14 @@ namespace VeiculosApp
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Vehicles API");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseAuthorization();
 

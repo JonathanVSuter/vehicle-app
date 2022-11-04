@@ -23,6 +23,19 @@
         "runtime": {
           "bin/placeholder/VeiculosApp.Core.Common.dll": {}
         }
+      },
+      "VeiculosApp.Core.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "VeiculosApp.Core.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/VeiculosApp.Core.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VeiculosApp.Core.Domain.dll": {}
+        }
       }
     }
   },
@@ -56,12 +69,18 @@
       "type": "project",
       "path": "../VeiculosApp.Core.Common/VeiculosApp.Core.Common.csproj",
       "msbuildProject": "../VeiculosApp.Core.Common/VeiculosApp.Core.Common.csproj"
+    },
+    "VeiculosApp.Core.Domain/1.0.0": {
+      "type": "project",
+      "path": "../VeiculosApp.Core.Domain/VeiculosApp.Core.Domain.csproj",
+      "msbuildProject": "../VeiculosApp.Core.Domain/VeiculosApp.Core.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 6.0.0",
-      "VeiculosApp.Core.Common >= 1.0.0"
+      "VeiculosApp.Core.Common >= 1.0.0",
+      "VeiculosApp.Core.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -103,6 +122,9 @@
           "projectReferences": {
             "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Common\\VeiculosApp.Core.Common.csproj": {
               "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Common\\VeiculosApp.Core.Common.csproj"
+            },
+            "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj": {
+              "projectPath": "C:\\Repos\\vehicle-app\\Back-End\\VeiculosApp\\VeiculosApp.Core.Domain\\VeiculosApp.Core.Domain.csproj"
             }
           }
         }
