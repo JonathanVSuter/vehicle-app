@@ -16,15 +16,13 @@ namespace VeiculosApp.Controllers
     [Route("[controller]")]
     [ApiController]
     public class VehicleController : ControllerBase
-    {
-        private readonly IVehicleRepository _vehiclesRepository;
+    {        
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryExecutor _queryExecutor;
         private readonly IMapper _mapper;
 
-        public VehicleController(IVehicleRepository vehiclesRepository, ICommandDispatcher commandDispatcher, IMapper mapper, IQueryExecutor queryExecutor)
-        {
-            _vehiclesRepository = vehiclesRepository;
+        public VehicleController(ICommandDispatcher commandDispatcher, IMapper mapper, IQueryExecutor queryExecutor)
+        {            
             _commandDispatcher = commandDispatcher;
             _mapper = mapper;
             _queryExecutor = queryExecutor;
