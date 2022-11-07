@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using VeiculosApp.Core.Common.Command;
 
 namespace VeiculosApp.Core.Domain.Commands

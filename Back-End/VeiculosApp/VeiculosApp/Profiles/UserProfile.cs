@@ -6,9 +6,9 @@ namespace VeiculosApp.Profiles
 {
     public class UserProfile : Profile
     {
-        public UserProfile() 
+        public UserProfile()
         {
-            CreateMap<UserDto,User>()
+            CreateMap<UserDto, User>()
                .ForMember(x => x.Id, y => y.MapFrom(src => src.Id))
                .ForMember(x => x.IsActive, y => y.MapFrom(src => src.IsActive))
                .ForMember(x => x.CreatedDate, y => y.MapFrom(src => src.CreatedDate))

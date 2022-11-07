@@ -1,7 +1,4 @@
-﻿using VeiculosApp.Core.Domain.Mapping;
-using VeiculosApp.Core.Domain.Models;
-
-namespace VeiculosApp.Core.Domain.Dtos
+﻿namespace VeiculosApp.Core.Domain.Dtos
 {
     public class UserDto : BaseDto
     {

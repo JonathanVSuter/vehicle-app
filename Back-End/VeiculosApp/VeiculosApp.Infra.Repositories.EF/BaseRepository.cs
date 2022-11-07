@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using VeiculosApp.Core.Domain.Models;
 using VeiculosApp.Core.Domain.Repositories;
 
@@ -12,7 +10,7 @@ namespace VeiculosApp.Infra.Repositories.EF
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, IModel
     {
         protected AppVehiclesDbContext _appVehiclesDbContext;
-        public BaseRepository(AppVehiclesDbContext appVehiclesDbContext) 
+        public BaseRepository(AppVehiclesDbContext appVehiclesDbContext)
         {
             _appVehiclesDbContext = appVehiclesDbContext;
         }
@@ -25,7 +23,7 @@ namespace VeiculosApp.Infra.Repositories.EF
 
         public IEnumerable<TEntity> GetAll()
         {
-            var result =_appVehiclesDbContext.Set<TEntity>().ToList();
+            var result = _appVehiclesDbContext.Set<TEntity>().ToList();
             return result;
         }
 

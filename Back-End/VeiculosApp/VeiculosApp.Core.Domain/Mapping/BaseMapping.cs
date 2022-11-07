@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
-using VeiculosApp.Core.Domain.Dtos;
-using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Mapping
 {
     public abstract class BaseMapping<TInput, TOutput>
-        where TInput : new ()
-        where TOutput : new ()
+        where TInput : new()
+        where TOutput : new()
     {
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; }

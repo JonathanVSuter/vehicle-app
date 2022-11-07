@@ -31,11 +31,11 @@ namespace VeiculosApp.Infra.Repositories.EF
                     e.HasOne(x => x.User).WithMany(y => y.Announcements).HasForeignKey(z => z.IdUser);
                     e.HasOne(x => x.Vehicle).WithMany(y => y.Announcements).HasForeignKey(z => z.IdVehicle);
                 })
-                .Entity<VehicleImage>(e=> 
+                .Entity<VehicleImage>(e =>
                 {
-                    e.HasKey(x=> x.Id);
-                    e.HasOne(x => x.Vehicle).WithMany(y => y.VehicleImages).HasForeignKey(z => z.IdVehicle);                    
-                });                
+                    e.HasKey(x => x.Id);
+                    e.HasOne(x => x.Vehicle).WithMany(y => y.VehicleImages).HasForeignKey(z => z.IdVehicle);
+                });
 
             base.OnModelCreating(modelBuilder);
         }

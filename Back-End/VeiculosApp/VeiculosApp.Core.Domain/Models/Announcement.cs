@@ -1,14 +1,11 @@
-﻿using VeiculosApp.Core.Domain.Dtos;
-using VeiculosApp.Core.Domain.Mapping;
-
-namespace VeiculosApp.Core.Domain.Models
+﻿namespace VeiculosApp.Core.Domain.Models
 {
     public class Announcement : BaseModel
-    {        
+    {
         public int IdVehicle { get; set; }
         public Vehicle Vehicle { get; set; }
         public int IdUser { get; set; }
         public User User { get; set; }
-        public double AnnouncedValue { get; set; }        
+        public double AnnouncedValue { get; set; }
     }
 }

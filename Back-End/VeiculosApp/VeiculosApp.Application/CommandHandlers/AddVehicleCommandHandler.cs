@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using VeiculosApp.Core.Common.Command;
+﻿using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Domain.Commands;
-using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
 using VeiculosApp.Core.Domain.Repositories;
 

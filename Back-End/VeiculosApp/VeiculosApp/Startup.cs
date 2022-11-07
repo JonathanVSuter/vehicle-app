@@ -29,7 +29,7 @@ namespace VeiculosApp
             services.AddSwaggerGen();
             services.AddCommandHandlers();
             services.AddQueryHandlers();
-            services.AddAutoMapper(Assembly.GetAssembly(typeof(VehicleProfile)));            
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(VehicleProfile)));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

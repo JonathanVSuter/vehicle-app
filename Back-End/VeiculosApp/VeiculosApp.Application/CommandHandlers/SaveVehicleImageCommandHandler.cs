@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VeiculosApp.Core.Common.Command;
+﻿using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Exceptions;
 using VeiculosApp.Core.Domain.Commands;
-using VeiculosApp.Core.Domain.Models;
 using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
@@ -27,7 +23,7 @@ namespace VeiculosApp.Application.CommandHandlers
             if (vehicle == null)
                 throw new NotFoundVehicleException($"There's no vehicle registed with {command.IdVehicle}");
 
-            foreach (var image in command.VehicleImages) 
+            foreach (var image in command.VehicleImages)
             {
                 image.IdVehicle = command.IdVehicle;
                 _vehicleImageRepository.Add(image);

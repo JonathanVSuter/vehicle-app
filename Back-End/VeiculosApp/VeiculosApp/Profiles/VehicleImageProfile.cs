@@ -1,8 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
 
@@ -10,7 +6,7 @@ namespace VeiculosApp.Profiles
 {
     public class VehicleImageProfile : Profile
     {
-        public VehicleImageProfile() 
+        public VehicleImageProfile()
         {
             CreateMap<VehicleImageDto, VehicleImage>()
                .ForMember(x => x.Id, y => y.MapFrom(src => src.Id))
@@ -20,7 +16,7 @@ namespace VeiculosApp.Profiles
                .ForMember(x => x.Description, y => y.MapFrom(src => src.Description))
                .ForMember(x => x.IdVehicle, y => y.MapFrom(src => src.IdVehicle))
                .ForMember(x => x.Name, y => y.MapFrom(src => src.Name))
-               .ForMember(x => x.Photo, y => y.MapFrom(src => src.Photo))               
+               .ForMember(x => x.Photo, y => y.MapFrom(src => src.Photo))
                .ReverseMap();
         }
     }

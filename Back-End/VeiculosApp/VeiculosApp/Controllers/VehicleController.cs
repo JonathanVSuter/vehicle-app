@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Commands;
@@ -34,21 +31,22 @@ namespace VeiculosApp.Controllers
         }
 
         [HttpDelete()]
-        public IActionResult Remove([FromQuery]int id)
+        public IActionResult Remove([FromQuery] int id)
         {
             var commandRemove = new RemoveVehicleCommand(id);
             _commandDispatcher.Dispatch(commandRemove);
 
-            return NoContent();            
+            return NoContent();
         }
 
         [HttpPut()]
         public IActionResult Update([FromBody] UpdateVehicleViewModel updateVehicleViewModel)
         {
+            var vehicle = _mapper.Map<Vehicle>(updateVehicleViewModel.Vehicle);
+            var command = new UpdateVehicleCommand(vehicle);
+            _commandDispatcher.Dispatch(command);
 
-            var a = _vehiclesRepository.GetAll();
-
-            return Ok(new { success = true, result = a });
+            return CreatedAtAction(nameof(VehicleController.Update), nameof(VehicleController));
         }
 
         [HttpPost()]
@@ -60,45 +58,45 @@ namespace VeiculosApp.Controllers
             var command = new SaveVehicleCommand(vehicle);
             var savedVehicle = _commandDispatcher.Dispatch<SaveVehicleCommand, Vehicle>(command);
 
-            if (images.Any()) 
+            if (images.Any())
             {
                 var commandSaveVehicleImages = new SaveVehicleImageCommand(savedVehicle.Id, images);
-                _commandDispatcher.Dispatch(commandSaveVehicleImages);                
+                _commandDispatcher.Dispatch(commandSaveVehicleImages);
             }
-            
+
             return CreatedAtAction(nameof(VehicleController.Save), nameof(VehicleController));
         }
 
-        [HttpGet()]        
+        [HttpGet()]
         [Route("getby")]
-        public IActionResult GetBy([FromQuery]string term)
+        public IActionResult GetBy([FromQuery] string term)
         {
             var query = new GetByVehicleQuery(term);
 
             var vehicles = _queryExecutor.Execute<GetByVehicleQuery, IList<Vehicle>>(query);
 
-            if(vehicles != null && vehicles.Any())
+            if (vehicles != null && vehicles.Any())
             {
                 var result = _mapper.Map<IList<VehicleDto>>(vehicles);
-                return Ok(new {result});
+                return Ok(new { result });
             }
             return NoContent();
         }
 
-        [HttpGet()]        
+        [HttpGet()]
         public IActionResult GetAll()
         {
             var query = new GetAllVehicleQuery();
 
             var vehicles = _queryExecutor.Execute<GetAllVehicleQuery, IList<Vehicle>>(query);
 
-            if(vehicles != null && vehicles.Any())
+            if (vehicles != null && vehicles.Any())
             {
                 var result = _mapper.Map<IList<VehicleDto>>(vehicles);
 
                 return Ok(new { result });
             }
-            return NoContent();           
+            return NoContent();
         }
 
         [HttpGet()]
@@ -108,12 +106,12 @@ namespace VeiculosApp.Controllers
             var query = new GetByIdVehicleQuery(id);
             var vehicle = _queryExecutor.Execute<GetByIdVehicleQuery, Vehicle>(query);
 
-            if(vehicle!= null) 
+            if (vehicle != null)
             {
                 var result = _mapper.Map<VehicleDto>(vehicle);
-                return Ok(new {result});
+                return Ok(new { result });
             }
-            return NoContent();            
+            return NoContent();
         }
     }
 }

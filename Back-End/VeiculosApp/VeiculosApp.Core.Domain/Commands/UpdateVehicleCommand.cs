@@ -4,10 +4,10 @@ using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Commands
 {
-    public class SaveVehicleCommand : ICommand
+    public class UpdateVehicleCommand : ICommand
     {
         public Vehicle Vehicle { get; set; }
-        public SaveVehicleCommand(Vehicle vehicle)
+        public UpdateVehicleCommand(Vehicle vehicle) 
         {
             if (vehicle == null) throw new ArgumentNullException($"parameter {nameof(vehicle)} is null");
             if (string.IsNullOrWhiteSpace(vehicle.Name)) throw new ArgumentNullException($"parameter {nameof(vehicle.Name)} is null or whitespace");
