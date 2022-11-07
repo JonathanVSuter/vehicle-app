@@ -8,7 +8,6 @@ using VeiculosApp.Core.Domain.Commands;
 using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
 using VeiculosApp.Core.Domain.Queries;
-using VeiculosApp.Core.Domain.Repositories;
 using VeiculosApp.ViewModels.Vehicle;
 
 namespace VeiculosApp.Controllers
@@ -16,13 +15,13 @@ namespace VeiculosApp.Controllers
     [Route("[controller]")]
     [ApiController]
     public class VehicleController : ControllerBase
-    {        
+    {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryExecutor _queryExecutor;
         private readonly IMapper _mapper;
 
         public VehicleController(ICommandDispatcher commandDispatcher, IMapper mapper, IQueryExecutor queryExecutor)
-        {            
+        {
             _commandDispatcher = commandDispatcher;
             _mapper = mapper;
             _queryExecutor = queryExecutor;

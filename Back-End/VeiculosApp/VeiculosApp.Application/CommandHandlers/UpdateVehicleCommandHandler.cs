@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VeiculosApp.Core.Common.Command;
+﻿using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Exceptions;
 using VeiculosApp.Core.Domain.Commands;
 using VeiculosApp.Core.Domain.Repositories;

@@ -10,7 +10,7 @@ namespace VeiculosApp.Core.Domain.Models
         public IList<Announcement> Announcements { get; set; }
         public IList<VehicleImage> VehicleImages { get; set; }
 
-        public void UpdateVehicle(Vehicle vehicle) 
+        public void UpdateVehicle(Vehicle vehicle)
         {
             Brand = vehicle.Brand;
             Name = vehicle.Name;
