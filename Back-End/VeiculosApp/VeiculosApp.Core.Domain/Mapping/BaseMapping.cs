@@ -4,6 +4,7 @@ using System.Reflection;
 
 namespace VeiculosApp.Core.Domain.Mapping
 {
+    [Obsolete("prototype, not in use.")]
     public abstract class BaseMapping<TInput, TOutput>
         where TInput : new()
         where TOutput : new()

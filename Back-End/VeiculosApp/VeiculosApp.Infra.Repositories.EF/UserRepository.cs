@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using VeiculosApp.Core.Domain.Models;
 using VeiculosApp.Core.Domain.Repositories;
@@ -11,9 +12,19 @@ namespace VeiculosApp.Infra.Repositories.EF
 
         public override IEnumerable<User> GetBy(string term)
         {
-            var result = _appVehiclesDbContext.Set<User>().Where(x => x.Email.Contains(term) || x.Name.Contains(term) || x.Role.Contains(term));
+            var sql = @"SELECT [Id]
+                            ,[Name]
+                            ,[Email]
+                            ,[Password]
+                            ,[Role]
+                            ,[CreatedDate]
+                            ,[UpdatedDate]
+                            ,[IsActive]
+                        FROM[veiculosapp.dev].[dbo].[Users]
+                        WHERE CONCAT(Id, Name, Email, Role, IsActive) like CONCAT('%',@term,'%')";
+
+            var result = _appVehiclesDbContext.Set<User>().FromSqlRaw(sql, new {term});
             return result;
         }
-
     }
 }

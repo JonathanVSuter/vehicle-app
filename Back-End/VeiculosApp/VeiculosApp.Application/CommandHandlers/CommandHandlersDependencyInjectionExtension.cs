@@ -9,8 +9,8 @@ namespace VeiculosApp.Application.CommandHandlers
     {
         public static void AddCommandHandlers(this IServiceCollection services)
         {
-            services.AddScoped<ICommandHandlerWithResult<SaveVehicleCommand, Vehicle>, AddVehicleCommandHandler>();
-            services.AddScoped<ICommandHandler<SaveVehicleImageCommand>, SaveVehicleImageCommandHandler>();
+            services.AddScoped<ICommandHandlerWithResult<SaveVehicleCommand, Vehicle>, SaveVehicleCommandHandler>();
+            services.AddScoped<ICommandHandler<SaveAnnouncementImageCommand>, SaveAnnoucementImageCommandHandler>();
             services.AddScoped<ICommandHandler<RemoveVehicleCommand>, RemoveVehicleCommandHandler>();
             services.AddScoped<ICommandHandler<UpdateVehicleCommand>, UpdateVehicleCommandHandler>();
         }

@@ -12,6 +12,7 @@ using VeiculosApp.ViewModels.Vehicle;
 
 namespace VeiculosApp.Controllers
 {
+    //TO-DO: implement all operations that could made on Entity
     [Route("[controller]")]
     [ApiController]
     public class VehicleController : ControllerBase
@@ -49,17 +50,10 @@ namespace VeiculosApp.Controllers
         [HttpPost()]
         public IActionResult Save([FromBody] SaveVehicleViewModel saveVehicleViewModel)
         {
-            var vehicle = _mapper.Map<Vehicle>(saveVehicleViewModel.Vehicle);
-            var images = _mapper.Map<List<VehicleImage>>(saveVehicleViewModel.VehicleImages);
+            var vehicle = _mapper.Map<Vehicle>(saveVehicleViewModel.Vehicle);           
 
             var command = new SaveVehicleCommand(vehicle);
-            var savedVehicle = _commandDispatcher.Dispatch<SaveVehicleCommand, Vehicle>(command);
-
-            if (images.Any())
-            {
-                var commandSaveVehicleImages = new SaveVehicleImageCommand(savedVehicle.Id, images);
-                _commandDispatcher.Dispatch(commandSaveVehicleImages);
-            }
+            var savedVehicle = _commandDispatcher.Dispatch<SaveVehicleCommand, Vehicle>(command);            
 
             return CreatedAtAction(nameof(VehicleController.Save), nameof(VehicleController));
         }

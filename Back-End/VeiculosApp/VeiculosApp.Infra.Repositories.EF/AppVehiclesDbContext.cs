@@ -8,7 +8,7 @@ namespace VeiculosApp.Infra.Repositories.EF
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
-        public DbSet<VehicleImage> VehicleImages { get; set; }
+        public DbSet<AnnoucementImage> AnnouncementImages { get; set; }
         public AppVehiclesDbContext(DbContextOptions<AppVehiclesDbContext> dbContextOptions) : base(dbContextOptions) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -17,8 +17,7 @@ namespace VeiculosApp.Infra.Repositories.EF
                 .Entity<Vehicle>(e =>
                 {
                     e.HasKey(x => x.Id);
-                    e.HasMany(x => x.Announcements).WithOne(y => y.Vehicle).HasForeignKey(z => z.IdVehicle);
-                    e.HasMany(x => x.VehicleImages).WithOne(y => y.Vehicle).HasForeignKey(z => z.IdVehicle);
+                    e.HasMany(x => x.Announcements).WithOne(y => y.Vehicle).HasForeignKey(z => z.IdVehicle);                    
                 })
                 .Entity<User>(e =>
                 {
@@ -30,11 +29,12 @@ namespace VeiculosApp.Infra.Repositories.EF
                     e.HasKey(x => x.Id);
                     e.HasOne(x => x.User).WithMany(y => y.Announcements).HasForeignKey(z => z.IdUser);
                     e.HasOne(x => x.Vehicle).WithMany(y => y.Announcements).HasForeignKey(z => z.IdVehicle);
+                    e.HasMany(x => x.AnnouncementImages).WithOne(y => y.Announcement).HasForeignKey(z => z.IdAnnouncement);
                 })
-                .Entity<VehicleImage>(e =>
+                .Entity<AnnoucementImage>(e =>
                 {
                     e.HasKey(x => x.Id);
-                    e.HasOne(x => x.Vehicle).WithMany(y => y.VehicleImages).HasForeignKey(z => z.IdVehicle);
+                    e.HasOne(x => x.Announcement).WithMany(y => y.AnnouncementImages).HasForeignKey(z => z.IdAnnouncement);
                 });
 
             base.OnModelCreating(modelBuilder);

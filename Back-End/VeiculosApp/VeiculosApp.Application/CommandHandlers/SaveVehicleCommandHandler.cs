@@ -5,12 +5,12 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class AddVehicleCommandHandler : ICommandHandlerWithResult<SaveVehicleCommand, Vehicle>
+    public class SaveVehicleCommandHandler : ICommandHandlerWithResult<SaveVehicleCommand, Vehicle>
     {
         private readonly IVehicleRepository _vehicleRepository;
-        private readonly IVehicleImageRepository _vehicleImageRepository;
+        private readonly IAnnouncementImageRepository _vehicleImageRepository;
 
-        public AddVehicleCommandHandler(IVehicleRepository vehicleRepository, IVehicleImageRepository vehicleImageRepository)
+        public SaveVehicleCommandHandler(IVehicleRepository vehicleRepository, IAnnouncementImageRepository vehicleImageRepository)
         {
             _vehicleRepository = vehicleRepository;
             _vehicleImageRepository = vehicleImageRepository;
