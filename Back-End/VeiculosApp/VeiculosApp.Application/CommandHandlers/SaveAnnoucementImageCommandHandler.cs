@@ -17,14 +17,13 @@ namespace VeiculosApp.Application.CommandHandlers
         }
 
         public void Handle(SaveAnnouncementImageCommand command)
-        {
-            var announcement = _announcementRepository.GetById(command.IdAnnouncement);
-
-            if (announcement == null) throw new NotFoundAnnoucementException($"No annoucement founded with informed Id: {command.IdAnnouncement}");
-
-            foreach (var image in command.AnnoucementImages)
+        {            
+            foreach (var image in command.AnnouncementImages)
             {
-                image.IdAnnouncement = command.IdAnnouncement;
+                var announcement = _announcementRepository.GetById(image.IdAnnouncement);
+
+                if (announcement == null) throw new NotFoundAnnoucementException($"No announcement founded with informed Id: {image.IdAnnouncement}");
+                
                 _announcementImageRepository.Add(image);
             }
         }

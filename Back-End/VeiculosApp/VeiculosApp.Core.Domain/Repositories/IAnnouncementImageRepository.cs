@@ -3,8 +3,9 @@ using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Repositories
 {
-    public interface IAnnouncementImageRepository : IBaseRepository<AnnoucementImage>
+    public interface IAnnouncementImageRepository : IBaseRepository<AnnouncementImage>
     {
-        IList<AnnoucementImage> GetAllVehicleImages(int idVehicle);
+        IList<AnnouncementImage> GetAllAnnoucementImagesByAnnoucementId(int idAnnoucement);
+        IList<AnnouncementImage> GetAllAnnouncementImagesByTerm(string term);
     }
 }

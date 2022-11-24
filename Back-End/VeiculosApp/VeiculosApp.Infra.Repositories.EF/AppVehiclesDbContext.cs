@@ -8,7 +8,7 @@ namespace VeiculosApp.Infra.Repositories.EF
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
-        public DbSet<AnnoucementImage> AnnouncementImages { get; set; }
+        public DbSet<AnnouncementImage> AnnouncementImages { get; set; }
         public AppVehiclesDbContext(DbContextOptions<AppVehiclesDbContext> dbContextOptions) : base(dbContextOptions) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace VeiculosApp.Infra.Repositories.EF
                     e.HasOne(x => x.Vehicle).WithMany(y => y.Announcements).HasForeignKey(z => z.IdVehicle);
                     e.HasMany(x => x.AnnouncementImages).WithOne(y => y.Announcement).HasForeignKey(z => z.IdAnnouncement);
                 })
-                .Entity<AnnoucementImage>(e =>
+                .Entity<AnnouncementImage>(e =>
                 {
                     e.HasKey(x => x.Id);
                     e.HasOne(x => x.Announcement).WithMany(y => y.AnnouncementImages).HasForeignKey(z => z.IdAnnouncement);

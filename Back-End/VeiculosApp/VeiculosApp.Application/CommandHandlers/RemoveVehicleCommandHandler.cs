@@ -17,24 +17,10 @@ namespace VeiculosApp.Application.CommandHandlers
         public void Handle(RemoveVehicleCommand command)
         {
             var vehicle = _vehicleRepository.GetById(command.Id);
-
-            if (vehicle == null) throw new NotFoundVehicleException($"There's no vehicle registed with {command.Id}");
-
-            //soft delete...
-
+            if (vehicle == null) throw new NotFoundVehicleException($"There's no vehicle registered with {command.Id}");
+            
             vehicle.Remove();
-
-            _vehicleRepository.Update(vehicle);
-
-            //Hard delete...
-            //var images = _vehicleImageRepository.GetAllVehicleImages(command.Id);
-
-            //foreach (var image in images)
-            //{
-            //    _vehicleImageRepository.Remove(image);
-            //}
-
-            //_vehicleRepository.Remove(vehicle);
+            _vehicleRepository.Update(vehicle);           
         }
     }
 }
