@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VeiculosApp.Core.Domain.Models
 {
@@ -9,5 +10,13 @@ namespace VeiculosApp.Core.Domain.Models
         public string Password { get; set; }
         public string Role { get; set; }
         public IList<Announcement> Announcements { get; set; }
+        public void Update(User user) 
+        {
+            Name = user.Name;
+            Email = user.Email;
+            Role = user.Role;
+            Password = user.Password;
+            UpdatedDate = DateTime.Now;
+        }
     }
 }

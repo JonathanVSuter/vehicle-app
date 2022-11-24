@@ -8,5 +8,9 @@ namespace VeiculosApp.Core.Domain.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public bool IsActive { get; set; }
+        public void Remove() 
+        {
+            IsActive = false;
+        }
     }
 }

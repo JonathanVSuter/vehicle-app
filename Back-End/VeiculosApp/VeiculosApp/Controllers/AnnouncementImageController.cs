@@ -8,7 +8,7 @@ using VeiculosApp.Core.Domain.Commands;
 using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
 using VeiculosApp.Core.Domain.Queries;
-using VeiculosApp.ViewModels.VehicleImage;
+using VeiculosApp.ViewModels.AnnouncementImage;
 
 namespace VeiculosApp.Controllers
 {

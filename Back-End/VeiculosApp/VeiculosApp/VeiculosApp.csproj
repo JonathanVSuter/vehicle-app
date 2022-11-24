@@ -18,5 +18,9 @@
     <ProjectReference Include="..\VeiculosApp.Infra.Repositories.EF\VeiculosApp.Infra.Repositories.EF.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Login\" />
+  </ItemGroup>
+
 
 </Project>

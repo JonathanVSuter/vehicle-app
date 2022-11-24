@@ -6,5 +6,6 @@ namespace VeiculosApp.Controllers
     [ApiController]
     public class AnnouncementController : ControllerBase
     {
+
     }
 }

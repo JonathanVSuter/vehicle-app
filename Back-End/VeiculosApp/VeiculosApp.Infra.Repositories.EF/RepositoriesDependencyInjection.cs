@@ -12,7 +12,8 @@ namespace VeiculosApp.Infra.Repositories.EF
             serviceCollection.AddDbContext<AppVehiclesDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("VehiclesDb")));
             serviceCollection.AddScoped<IVehicleRepository, VehicleRepository>();
             serviceCollection.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
-            serviceCollection.AddScoped<IAnnouncementImageRepository, AnnoucementImageRepository>();            
+            serviceCollection.AddScoped<IAnnouncementImageRepository, AnnoucementImageRepository>();
+            serviceCollection.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

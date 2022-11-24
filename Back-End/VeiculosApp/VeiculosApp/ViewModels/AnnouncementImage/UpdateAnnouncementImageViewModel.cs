@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using VeiculosApp.Core.Domain.Dtos;
 
-namespace VeiculosApp.ViewModels.VehicleImage
+namespace VeiculosApp.ViewModels.AnnouncementImage
 {
     public class UpdateAnnouncementImageViewModel
     {

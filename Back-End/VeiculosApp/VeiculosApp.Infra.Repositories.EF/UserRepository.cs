@@ -26,5 +26,11 @@ namespace VeiculosApp.Infra.Repositories.EF
             var result = _appVehiclesDbContext.Set<User>().FromSqlRaw(sql, new {term});
             return result;
         }
+
+        public User GetUserByEmail(string email)
+        {
+            var result = _appVehiclesDbContext.Set<User>().FirstOrDefault(x=> x.Email == email);
+            return result;
+        }
     }
 }
