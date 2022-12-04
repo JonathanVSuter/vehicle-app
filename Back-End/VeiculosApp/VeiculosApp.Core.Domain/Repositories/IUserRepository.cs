@@ -1,9 +1,10 @@
-﻿using VeiculosApp.Core.Domain.Models;
+﻿using System.Collections.Generic;
+using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Repositories
 {
     public interface IUserRepository : IBaseRepository<User>
     {
-        User GetUserByEmail(string email);
+        User GetUserByEmail(string email);        
     }
 }

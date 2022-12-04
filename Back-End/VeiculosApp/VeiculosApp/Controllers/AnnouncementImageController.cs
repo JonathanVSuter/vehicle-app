@@ -42,7 +42,7 @@ namespace VeiculosApp.Controllers
             var command = new UpdateAnnoucementImageCommand(vehicle);
             _commandDispatcher.Dispatch(command);
 
-            return CreatedAtAction(nameof(AnnouncementImageController.Update), nameof(AnnouncementImageController));
+            return NoContent();
         }
 
         [HttpPost()]

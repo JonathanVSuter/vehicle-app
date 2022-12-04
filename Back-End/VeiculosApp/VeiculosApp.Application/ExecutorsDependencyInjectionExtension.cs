@@ -8,8 +8,8 @@ namespace VeiculosApp.Application
     {
         public static void AddExecutors(this IServiceCollection services)
         {
-            services.AddTransient<IQueryExecutor, QueryExecutor>();
-            services.AddTransient<ICommandDispatcher, CommandDispatcher>();
+            services.AddScoped<IQueryExecutor, QueryExecutor>();
+            services.AddScoped<ICommandDispatcher, CommandDispatcher>();            
         }
     }
 }

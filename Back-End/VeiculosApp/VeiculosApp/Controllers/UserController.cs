@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Commands;
+using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
+using VeiculosApp.Core.Domain.Queries;
 using VeiculosApp.ViewModels.User;
 
 namespace VeiculosApp.Controllers
@@ -36,7 +40,7 @@ namespace VeiculosApp.Controllers
             var user = _mapper.Map<User>(updateUserViewModel.User);
             var command = new UpdateUserCommand(user);
             _commandDispatcher.Dispatch(command);
-            return CreatedAtAction(nameof(UserController.Update), nameof(UserController));
+            return NoContent();
         }
 
         [HttpPost()]
@@ -53,31 +57,29 @@ namespace VeiculosApp.Controllers
         [Route("getby")]
         public IActionResult GetBy([FromQuery] string term)
         {
-            //var query = new GetByTermAnnouncementImageQuery(term);
-
-            //var vehicles = _queryExecutor.Execute<GetByTermAnnouncementImageQuery, IList<AnnouncementImage>>(query);
-
-            //if (vehicles != null && vehicles.Any())
-            //{
-            //    var result = _mapper.Map<IList<AnnouncementImageDto>>(vehicles);
-            //    return Ok(new { result });
-            //}
+            var query = new GetByTermUserQuery(term);
+            var users = _queryExecutor.Execute<GetByTermUserQuery, IList<User>>(query);
+            if (users != null && users.Any())
+            {
+                var result = _mapper.Map<IList<User>>(users);
+                return Ok(new { result });
+            }
             return NoContent();
         }
 
         [HttpGet()]
         public IActionResult GetAll()
         {
-            //var query = new GetAllAnnouncementImagesQuery();
+            var query = new GetAllUsersQuery();
 
-            //var vehicles = _queryExecutor.Execute<GetAllAnnouncementImagesQuery, IList<AnnouncementImage>>(query);
+            var users = _queryExecutor.Execute<GetAllUsersQuery, IList<User>>(query);
 
-            //if (vehicles != null && vehicles.Any())
-            //{
-            //    var result = _mapper.Map<IList<AnnouncementImageDto>>(vehicles);
+            if (users != null && users.Any())
+            {
+                var result = _mapper.Map<IList<UserDto>>(users);
 
-            //    return Ok(new { result });
-            //}
+                return Ok(new { result });
+            }
             return NoContent();
         }
 
@@ -85,15 +87,16 @@ namespace VeiculosApp.Controllers
         [Route("getbyid")]
         public IActionResult GetById([FromQuery] int id)
         {
-            //var query = new GetByIdAnnouncementImageQuery(id);
-            //var vehicle = _queryExecutor.Execute<GetByIdAnnouncementImageQuery, AnnouncementImage>(query);
+            var query = new GetByIdUserQuery(id);
+            var user = _queryExecutor.Execute<GetByIdUserQuery, User>(query);
 
-            //if (vehicle != null)
-            //{
-            //    var result = _mapper.Map<AnnouncementImageDto>(vehicle);
-            //    return Ok(new { result });
-            //}
-            return NoContent();
+            if (user != null)
+            {
+                var result = _mapper.Map<UserDto>(user);
+                return Ok(new { result });
+            }
+            //use this for when a resource is not finded.
+            return NotFound(new { message = $"There's no User with Id = {id}." });
         }
     }
 }
