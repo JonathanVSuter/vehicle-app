@@ -22,7 +22,7 @@ namespace VeiculosApp.Application.CommandHandlers
             var user = _userRepository.GetUserByEmail(command.User.Email);
             if (user != null) throw new EmailInUseException($"This e-mail is already in use by other user.");
 
-            _userRepository.Add(command.User);
+            _userRepository.Save(command.User);
         }
     }
 }

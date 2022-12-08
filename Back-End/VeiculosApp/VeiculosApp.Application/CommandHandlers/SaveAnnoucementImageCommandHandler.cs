@@ -24,7 +24,7 @@ namespace VeiculosApp.Application.CommandHandlers
 
                 if (announcement == null) throw new NotFoundAnnoucementException($"No announcement founded with informed Id: {image.IdAnnouncement}");
                 
-                _announcementImageRepository.Add(image);
+                _announcementImageRepository.Save(image);
             }
         }
     }

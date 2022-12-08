@@ -39,7 +39,7 @@ namespace VeiculosApp.Controllers
         public IActionResult Update([FromBody] UpdateAnnouncementImageViewModel updateVehicleViewModel)
         {
             var vehicle = _mapper.Map<IList<AnnouncementImage>>(updateVehicleViewModel.AnnouncementImages);
-            var command = new UpdateAnnoucementImageCommand(vehicle);
+            var command = new UpdateAnnouncementImageCommand(vehicle);
             _commandDispatcher.Dispatch(command);
 
             return NoContent();

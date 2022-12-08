@@ -18,7 +18,7 @@ namespace VeiculosApp.Application.CommandHandlers
 
         public Vehicle Handle(SaveVehicleCommand command)
         {
-            var result = _vehicleRepository.Add(command.Vehicle);
+            var result = _vehicleRepository.Save(command.Vehicle);
 
             return result;
         }

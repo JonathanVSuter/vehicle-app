@@ -14,7 +14,7 @@ namespace VeiculosApp.Infra.Repositories.EF
         {
             _appVehiclesDbContext = appVehiclesDbContext;
         }
-        public TEntity Add(TEntity model)
+        public TEntity Save(TEntity model)
         {
             _appVehiclesDbContext.Set<TEntity>().Add(model);
             _appVehiclesDbContext.SaveChanges();
@@ -28,13 +28,7 @@ namespace VeiculosApp.Infra.Repositories.EF
         }
 
         public virtual IEnumerable<TEntity> GetBy(string term)
-        {
-            //trying to write an generic GetBy, joining all fields of in one clause
-            //var listOfParams = new List<Func<PropertyInfo,bool>>();
-            //foreach(var item in typeof(TEntity).GetProperties()) 
-            //{
-            //    listOfParams.Add(x=> item.GetValue(item).ToString().Contains(term));  
-            //}            
+        {                      
             var result = _appVehiclesDbContext.Set<TEntity>().Where(x => x.Id == Convert.ToInt32(term));
             return result;
         }

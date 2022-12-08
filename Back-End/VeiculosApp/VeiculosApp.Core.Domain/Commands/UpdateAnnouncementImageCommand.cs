@@ -7,10 +7,10 @@ using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Commands
 {
-    public class UpdateAnnoucementImageCommand : ICommand
+    public class UpdateAnnouncementImageCommand : ICommand
     {
         public IList<AnnouncementImage> AnnoucementImages { get; set; }
-        public UpdateAnnoucementImageCommand(IList<AnnouncementImage> annoucementImages)
+        public UpdateAnnouncementImageCommand(IList<AnnouncementImage> annoucementImages)
         {
             if (annoucementImages == null) throw new ArgumentNullException($"parameter {nameof(annoucementImages)} could not be null.");
             if (annoucementImages.Any()) throw new ArgumentException($"parameter {nameof(annoucementImages)}  must be at least one element.");            
