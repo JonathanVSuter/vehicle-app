@@ -18,6 +18,8 @@ namespace VeiculosApp.Application.CommandHandlers
             services.AddScoped<ICommandHandler<UpdateUserCommand>, UpdateUserCommandHandler>();
             services.AddScoped<ICommandHandler<SaveUserCommand>, SaveUserCommandHandler>();            
             services.AddScoped<ICommandHandler<RemoveAnnouncementCommand>, RemoveAnnouncementCommandHandler>();
+            services.AddScoped<ICommandHandler<UpdateAnnouncementCommand>, UpdateAnnouncementCommandHandler>();
+            services.AddScoped<ICommandHandler<SaveAnnouncementCommand>, SaveAnnouncementCommandHandler>();
         }
     }
 }

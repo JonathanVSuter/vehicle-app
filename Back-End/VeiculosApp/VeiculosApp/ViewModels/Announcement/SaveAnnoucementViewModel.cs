@@ -6,8 +6,8 @@ using VeiculosApp.Core.Domain.Dtos;
 
 namespace VeiculosApp.ViewModels.Announcement
 {
-    public class UpdateAnnoucementViewModel
+    public class SaveAnnoucementViewModel
     {
-        public AnnouncementDto Annoucement { get; set; }
+        public AnnouncementDto Announcement { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Models;
@@ -11,9 +12,16 @@ namespace VeiculosApp.Application.QueryHandlers
     public class GetByTermUserQueryHandler : IQueryHandler<GetByTermUserQuery, IList<User>>
     {
         private readonly IUserRepository _userRepository;
+
+        public GetByTermUserQueryHandler(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
         public IList<User> Execute(GetByTermUserQuery query)
         {
-            throw new NotImplementedException();
+            var result = _userRepository.GetBy(query.Term).ToList();
+            return result;
         }
     }
 }

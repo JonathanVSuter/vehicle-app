@@ -11,8 +11,7 @@ using VeiculosApp.Core.Domain.Queries;
 using VeiculosApp.ViewModels.Vehicle;
 
 namespace VeiculosApp.Controllers
-{
-    //TO-DO: implement all operations that could made on Entity
+{    
     [Route("[controller]")]
     [ApiController]
     public class VehicleController : ControllerBase

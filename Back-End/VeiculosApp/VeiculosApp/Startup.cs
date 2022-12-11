@@ -8,6 +8,7 @@ using VeiculosApp.Application;
 using VeiculosApp.Application.CommandHandlers;
 using VeiculosApp.Application.QueryHandlers;
 using VeiculosApp.Infra.Repositories.EF;
+using VeiculosApp.Infra.Services;
 using VeiculosApp.Profiles;
 
 namespace VeiculosApp
@@ -30,6 +31,7 @@ namespace VeiculosApp
             services.AddCommandHandlers();
             services.AddQueryHandlers();
             services.AddAutoMapper(Assembly.GetAssembly(typeof(VehicleProfile)));
+            services.AddServices(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -48,7 +50,7 @@ namespace VeiculosApp
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Vehicles API");
-                c.RoutePrefix = string.Empty;
+                c.RoutePrefix = string.Empty;                
             });
 
             app.UseAuthorization();

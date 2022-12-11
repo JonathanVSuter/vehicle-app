@@ -15,12 +15,14 @@ namespace VeiculosApp.Application.CommandHandlers
         private readonly IAnnouncementRepository _announcementRepository;
         private readonly IAnnouncementImageRepository _announcementImageRepository;
         private readonly IVehicleRepository _vehicleRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UpdateAnnouncementCommandHandler(IAnnouncementRepository announcementRepository, IAnnouncementImageRepository announcementImageRepository, IVehicleRepository vehicleRepository)
+        public UpdateAnnouncementCommandHandler(IAnnouncementRepository announcementRepository, IAnnouncementImageRepository announcementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
         {
             _announcementRepository = announcementRepository;
             _announcementImageRepository = announcementImageRepository;
             _vehicleRepository = vehicleRepository;
+            _userRepository = userRepository;
         }
 
         public void Handle(UpdateAnnouncementCommand command)
@@ -30,35 +32,44 @@ namespace VeiculosApp.Application.CommandHandlers
 
             var vehicle = _vehicleRepository.GetById(command.Announcement.IdVehicle);
 
-            //continue annoucement's data validation.
+            if (vehicle == null) throw new NotFoundVehicleException($"There's no Vehicle with Id = {command.Announcement.IdVehicle}");
+
+            announcement.Vehicle = vehicle;
 
             var images = _announcementImageRepository.GetAllAnnoucementImagesByAnnoucementId(command.Announcement.Id);
 
+            var user = _userRepository.GetById(command.Announcement.IdUser);
+
+            if (user == null) throw new NotFoundUserException($"There's no User with Id = {command.Announcement.IdUser}");
+
+            announcement.User = user;
+
             if(images == null)
             {
-                announcement.AnnouncementImages = new List<AnnouncementImage>();
-                foreach (var image in command.Announcement.AnnouncementImages)
+                announcement.Images = new List<AnnouncementImage>();
+                foreach (var image in command.Announcement.Images)
                 {
                     if(image.Id <= 0) 
                         _announcementImageRepository.Save(image);
-                    announcement.AnnouncementImages.Add(image);
+                    announcement.Images.Add(image);
                 }
             }
             else
             {
-                var imagesToRemove = command.Announcement.AnnouncementImages.Where(x=> announcement.AnnouncementImages.All(y=> y.Id != x.Id));
+                var imagesToRemove = command.Announcement.Images.Where(x=> announcement.Images.All(y=> y.Id != x.Id));
                 foreach(var image in imagesToRemove) 
                 {
                     _announcementImageRepository.Remove(image);
                 }
 
-                var imagesToAdd = announcement.AnnouncementImages.Where(x => announcement.AnnouncementImages.All(y => y.Id != x.Id));
+                var imagesToAdd = announcement.Images.Where(x => announcement.Images.All(y => y.Id != x.Id));
                 foreach(var image in imagesToAdd)
                 {
                     _announcementImageRepository.Save(image);
-                    announcement.AnnouncementImages.Add(image);
+                    announcement.Images.Add(image);
                 }
             }
+            _announcementRepository.Save(announcement);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace VeiculosApp.Application.QueryHandlers
             services.AddScoped<IQueryHandler<GetAllAnnouncementImagesQuery, IList<AnnouncementImage>>, GetAllAnnouncementImagesQueryHandler>();
             services.AddScoped<IQueryHandler<GetAllUsersQuery, IList<User>>, GetAllUsersQueryHandler>();
             services.AddScoped<IQueryHandler<GetByIdUserQuery, User>, GetByIdUserQueryHandler>();
+            services.AddScoped<IQueryHandler<GetByTermUserQuery, IList<User>>, GetByTermUserQueryHandler>();
         }
     }
 }

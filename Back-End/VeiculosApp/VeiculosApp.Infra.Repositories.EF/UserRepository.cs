@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using VeiculosApp.Core.Domain.Models;
@@ -23,7 +24,7 @@ namespace VeiculosApp.Infra.Repositories.EF
                         FROM[veiculosapp.dev].[dbo].[Users]
                         WHERE CONCAT(Id, Name, Email, Role, IsActive) like CONCAT('%',@term,'%')";
 
-            var result = _appVehiclesDbContext.Set<User>().FromSqlRaw(sql, new {term});
+            var result = _appVehiclesDbContext.Set<User>().FromSqlRaw(sql, new SqlParameter("@term", term));
             return result;
         }
 

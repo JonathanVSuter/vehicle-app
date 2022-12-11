@@ -11,7 +11,7 @@ namespace VeiculosApp.Core.Domain.Commands
         public User User { get; set; }
         public SaveUserCommand(User user)
         {
-            if (user.Id > 0) throw new ArgumentOutOfRangeException($"UserId could not be less or equal zero.");
+            if (user.Id < 0) throw new ArgumentOutOfRangeException($"UserId could not be less or equal zero.");
             if (user.Name == string.Empty) throw new ArgumentException($"User name could not be empty.");
             if (user.Name == null) throw new ArgumentNullException($"User name could not be null.");
             if (user.Name == " ") throw new ArgumentException($"User name could not be whitespace.");

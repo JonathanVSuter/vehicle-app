@@ -18,6 +18,7 @@ namespace VeiculosApp.Profiles
                //.ForMember(x => x.User, y => y.MapFrom(src => src.User))
                .ForMember(x => x.IdUser, y => y.MapFrom(src => src.IdUser))
                .ForMember(x => x.IdVehicle, y => y.MapFrom(src => src.IdVehicle))
+               .ForMember(x => x.Images, y=> y.MapFrom(src => src.Images))
                .ReverseMap();
         }
     }

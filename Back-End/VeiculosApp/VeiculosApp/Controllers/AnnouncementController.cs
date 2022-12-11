@@ -4,23 +4,26 @@ using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Commands;
 using VeiculosApp.Core.Domain.Models;
+using VeiculosApp.Core.Domain.Services;
 using VeiculosApp.ViewModels.Announcement;
 
 namespace VeiculosApp.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     [ApiController]
     public class AnnouncementController : ControllerBase
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryExecutor _queryExecutor;
         private readonly IMapper _mapper;
+        private readonly ITokenService _tokenService;
 
-        public AnnouncementController(ICommandDispatcher commandDispatcher, IQueryExecutor queryExecutor, IMapper mapper)
+        public AnnouncementController(ICommandDispatcher commandDispatcher, IQueryExecutor queryExecutor, IMapper mapper, ITokenService tokenService)
         {
             _commandDispatcher = commandDispatcher;
             _queryExecutor = queryExecutor;
             _mapper = mapper;
+            _tokenService = tokenService;
         }
 
         [HttpDelete()]
@@ -34,21 +37,21 @@ namespace VeiculosApp.Controllers
         [HttpPut()]
         public IActionResult Update([FromBody] UpdateAnnoucementViewModel updateAnnoucementViewModel)
         {
-            var announcement = _mapper.Map<Announcement>(updateAnnoucementViewModel.AnnoucementDto);
+            var announcement = _mapper.Map<Announcement>(updateAnnoucementViewModel.Annoucement);
             var command = new UpdateAnnouncementCommand(announcement);
             _commandDispatcher.Dispatch(command);
             return NoContent();
         }
 
-        //[HttpPost()]
-        //public IActionResult Save([FromBody] SaveUserViewModel saveUserViewModel)
-        //{
-        //    var user = _mapper.Map<User>(saveUserViewModel.User);
-        //    var command = new SaveUserCommand(user);
-        //    _commandDispatcher.Dispatch(command);
+        [HttpPost()]
+        public IActionResult Save([FromBody] SaveAnnoucementViewModel saveAnnoucementViewModel)
+        {
+            var announcement = _mapper.Map<Announcement>(saveAnnoucementViewModel.Announcement);
+            var command = new SaveAnnouncementCommand(announcement);
+            _commandDispatcher.Dispatch(command);
 
-        //    return CreatedAtAction(nameof(UserController.Save), nameof(UserController));
-        //}
+            return Created(nameof(AnnouncementController.Save), nameof(AnnouncementController));
+        }
 
         //[HttpGet()]
         //[Route("getby")]
