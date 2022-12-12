@@ -1,23 +1,31 @@
-﻿namespace VeiculosApp.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using VeiculosApp.Core.Common.Query;
+using VeiculosApp.Core.Domain.Dtos;
+using VeiculosApp.Core.Domain.Queries;
+using VeiculosApp.ViewModels.Login;
+
+namespace VeiculosApp.Controllers
 {
-    public class LoginController
+    [Route("[controller]")]
+    [ApiController]
+    public class LoginController : ControllerBase
     {
-        //private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IQueryExecutor _queryExecutor;
 
-        //public AuthController(ICommandDispatcher commandDispatcher)
-        //{
-        //    _commandDispatcher = commandDispatcher;
-        //}
+        public LoginController(IQueryExecutor queryExecutor)
+        {
+            _queryExecutor = queryExecutor;
+        }
 
-        //[AllowAnonymous]
-        //[Route("login")]
-        //[HttpPost]
-        //public IActionResult Login([FromBody] UserViewModel userModel)
-        //{
-        //    var command = new LoginCommand(userModel.UserName, userModel.Password, userModel.Role, userModel.ApplicationName);
-        //    var result = _commandDispatcher.Dispatch<LoginCommand, LoginResult>(command);
-        //    return Ok(result);
-        //}
+        [AllowAnonymous]        
+        [HttpPost()]
+        public IActionResult Login([FromBody] LoginViewModel loginViewModel)
+        {
+            var query = new LoginQuery(loginViewModel.Login.Email, loginViewModel.Login.Password);
+            var result = _queryExecutor.Execute<LoginQuery, LoginSucessDto>(query);
+            return Ok(result);
+        }
 
         //[AllowAnonymous]
         //[HttpPost]

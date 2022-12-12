@@ -15,11 +15,6 @@ namespace VeiculosApp.Core.Domain.Models
             Name = vehicle.Name;
             UpdatedDate = DateTime.Now;
             IsActive = vehicle.IsActive;
-        }
-        public void Remove()
-        {
-            IsActive = false;
-            UpdatedDate = DateTime.Now;
-        }
+        }       
     }
 }

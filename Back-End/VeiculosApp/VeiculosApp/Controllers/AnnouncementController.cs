@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Query;
@@ -25,7 +26,7 @@ namespace VeiculosApp.Controllers
             _mapper = mapper;
             _tokenService = tokenService;
         }
-
+        [Authorize]
         [HttpDelete()]
         public IActionResult Remove([FromQuery] int id)
         {
@@ -33,7 +34,7 @@ namespace VeiculosApp.Controllers
             _commandDispatcher.Dispatch(commandRemove);
             return NoContent();
         }
-
+        [Authorize]
         [HttpPut()]
         public IActionResult Update([FromBody] UpdateAnnoucementViewModel updateAnnoucementViewModel)
         {
@@ -42,7 +43,7 @@ namespace VeiculosApp.Controllers
             _commandDispatcher.Dispatch(command);
             return NoContent();
         }
-
+        [Authorize]
         [HttpPost()]
         public IActionResult Save([FromBody] SaveAnnoucementViewModel saveAnnoucementViewModel)
         {

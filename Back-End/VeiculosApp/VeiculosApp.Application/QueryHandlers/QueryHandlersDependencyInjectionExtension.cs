@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using VeiculosApp.Core.Common.Query;
+using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
 using VeiculosApp.Core.Domain.Queries;
 
@@ -19,6 +20,7 @@ namespace VeiculosApp.Application.QueryHandlers
             services.AddScoped<IQueryHandler<GetAllUsersQuery, IList<User>>, GetAllUsersQueryHandler>();
             services.AddScoped<IQueryHandler<GetByIdUserQuery, User>, GetByIdUserQueryHandler>();
             services.AddScoped<IQueryHandler<GetByTermUserQuery, IList<User>>, GetByTermUserQueryHandler>();
+            services.AddScoped<IQueryHandler<LoginQuery, LoginSucessDto>, LoginQueryHandler>();
         }
     }
 }

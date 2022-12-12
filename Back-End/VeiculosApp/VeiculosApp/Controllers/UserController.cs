@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ using VeiculosApp.ViewModels.User;
 
 namespace VeiculosApp.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]")]    
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -26,6 +27,8 @@ namespace VeiculosApp.Controllers
             _queryExecutor = queryExecutor;
             _mapper = mapper;
         }
+
+        [Authorize(Roles = "ADMIN")]
         [HttpDelete()]
         public IActionResult Remove([FromQuery] int id)
         {
@@ -33,7 +36,7 @@ namespace VeiculosApp.Controllers
             _commandDispatcher.Dispatch(commandRemove);
             return NoContent();
         }
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPut()]
         public IActionResult Update([FromBody] UpdateUserViewModel updateUserViewModel)
         {
@@ -42,7 +45,7 @@ namespace VeiculosApp.Controllers
             _commandDispatcher.Dispatch(command);
             return NoContent();
         }
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPost()]
         public IActionResult Save([FromBody] SaveUserViewModel saveUserViewModel)
         {
@@ -52,7 +55,7 @@ namespace VeiculosApp.Controllers
 
             return CreatedAtAction(nameof(UserController.Save), nameof(UserController));
         }
-
+        [Authorize(Roles = "ADMIN")]
         [HttpGet()]
         [Route("getby")]
         public IActionResult GetBy([FromQuery] string term)
@@ -66,7 +69,7 @@ namespace VeiculosApp.Controllers
             }
             return NoContent();
         }
-
+        [Authorize(Roles = "ADMIN")]
         [HttpGet()]
         public IActionResult GetAll()
         {
@@ -82,7 +85,7 @@ namespace VeiculosApp.Controllers
             }
             return NoContent();
         }
-
+        [Authorize(Roles = "ADMIN")]
         [HttpGet()]
         [Route("getbyid")]
         public IActionResult GetById([FromQuery] int id)

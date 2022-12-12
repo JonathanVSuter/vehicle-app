@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,6 @@ namespace VeiculosApp.Controllers
             _commandDispatcher.Dispatch(commandRemove);
             return NoContent();
         }
-
         [HttpPut()]
         public IActionResult Update([FromBody] UpdateAnnouncementImageViewModel updateVehicleViewModel)
         {
@@ -44,7 +44,7 @@ namespace VeiculosApp.Controllers
 
             return NoContent();
         }
-
+        [Authorize]
         [HttpPost()]
         public IActionResult Save([FromBody] SaveAnnouncementImageViewModel saveVehicleViewModel)
         {
@@ -55,7 +55,7 @@ namespace VeiculosApp.Controllers
 
             return CreatedAtAction(nameof(AnnouncementImageController.Save), nameof(AnnouncementImageController));
         }
-
+        [Authorize]
         [HttpGet()]
         [Route("getby")]
         public IActionResult GetBy([FromQuery] string term)
@@ -71,7 +71,7 @@ namespace VeiculosApp.Controllers
             }
             return NoContent();
         }
-
+        [Authorize]
         [HttpGet()]
         public IActionResult GetAll()
         {
@@ -87,7 +87,7 @@ namespace VeiculosApp.Controllers
             }
             return NoContent();
         }
-
+        [Authorize]
         [HttpGet()]
         [Route("getbyid")]
         public IActionResult GetById([FromQuery] int id)
