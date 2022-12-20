@@ -5,6 +5,6 @@ namespace VeiculosApp.ViewModels.AnnouncementImage
 {
     public class SaveAnnouncementImageViewModel
     {        
-        public IList<AnnouncementImageDto> VehicleImage { get; set; }
+        public IList<AdvertisementImageDto> VehicleImage { get; set; }
     }
 }

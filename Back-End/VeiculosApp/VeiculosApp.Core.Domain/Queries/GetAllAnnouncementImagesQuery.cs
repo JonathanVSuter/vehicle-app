@@ -7,7 +7,7 @@ using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Queries
 {
-    public class GetAllAnnouncementImagesQuery : IQuery<IList<AnnouncementImage>>
+    public class GetAllAnnouncementImagesQuery : IQuery<IList<AdvertisementImage>>
     {
     }
 }

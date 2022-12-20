@@ -10,6 +10,7 @@ using System.Text;
 using VeiculosApp.Application;
 using VeiculosApp.Application.CommandHandlers;
 using VeiculosApp.Application.QueryHandlers;
+using VeiculosApp.Authentication;
 using VeiculosApp.Infra.Repositories.EF;
 using VeiculosApp.Infra.Services;
 using VeiculosApp.Profiles;
@@ -35,8 +36,7 @@ namespace VeiculosApp
             services.AddQueryHandlers();
             services.AddAutoMapper(Assembly.GetAssembly(typeof(VehicleProfile)));
             services.AddServices(Configuration);
-
-            services.AddCors();
+            services.AddCors();            
 
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("SecretJWT").Value);
 
@@ -56,7 +56,7 @@ namespace VeiculosApp
                     ValidateIssuer = false,
                     ValidateAudience = false                    
                 };
-            });
+            });            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -85,7 +85,7 @@ namespace VeiculosApp
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

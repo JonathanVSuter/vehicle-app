@@ -8,16 +8,16 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class RemoveAnnouncementCommandHandler : ICommandHandler<RemoveAnnouncementCommand>
+    public class RemoveAnnouncementCommandHandler : ICommandHandler<RemoveAdvertisementCommand>
     {
-        private readonly IAnnouncementRepository _announcementRepository;
+        private readonly IAdvertisementRepository _announcementRepository;
 
-        public RemoveAnnouncementCommandHandler(IAnnouncementRepository announcementRepository)
+        public RemoveAnnouncementCommandHandler(IAdvertisementRepository announcementRepository)
         {
             _announcementRepository = announcementRepository;
         }
 
-        public void Handle(RemoveAnnouncementCommand command)
+        public void Handle(RemoveAdvertisementCommand command)
         {
             var annoucement = _announcementRepository.GetById(command.Id);
             if (annoucement == null) throw new NotFoundAnnoucementException($"There's no annoucement with Id = {command.Id}");

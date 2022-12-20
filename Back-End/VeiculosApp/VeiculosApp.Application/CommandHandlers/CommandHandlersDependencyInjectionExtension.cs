@@ -10,16 +10,16 @@ namespace VeiculosApp.Application.CommandHandlers
         public static void AddCommandHandlers(this IServiceCollection services)
         {
             services.AddScoped<ICommandHandlerWithResult<SaveVehicleCommand, Vehicle>, SaveVehicleCommandHandler>();
-            services.AddScoped<ICommandHandler<SaveAnnouncementImageCommand>, SaveAnnoucementImageCommandHandler>();
+            services.AddScoped<ICommandHandler<SaveAdvertisementImageCommand>, SaveAnnoucementImageCommandHandler>();
             services.AddScoped<ICommandHandler<RemoveVehicleCommand>, RemoveVehicleCommandHandler>();
             services.AddScoped<ICommandHandler<UpdateVehicleCommand>, UpdateVehicleCommandHandler>();
-            services.AddScoped<ICommandHandler<RemoveAnnouncementImageCommand>, RemoveAnnouncementImageCommandHandler>();            
+            services.AddScoped<ICommandHandler<RemoveAdvertisementImageCommand>, RemoveAnnouncementImageCommandHandler>();            
             services.AddScoped<ICommandHandler<RemoveUserCommand>, RemoveUserCommandHandler>();
             services.AddScoped<ICommandHandler<UpdateUserCommand>, UpdateUserCommandHandler>();
             services.AddScoped<ICommandHandler<SaveUserCommand>, SaveUserCommandHandler>();            
-            services.AddScoped<ICommandHandler<RemoveAnnouncementCommand>, RemoveAnnouncementCommandHandler>();
-            services.AddScoped<ICommandHandler<UpdateAnnouncementCommand>, UpdateAnnouncementCommandHandler>();
-            services.AddScoped<ICommandHandler<SaveAnnouncementCommand>, SaveAnnouncementCommandHandler>();
+            services.AddScoped<ICommandHandler<RemoveAdvertisementCommand>, RemoveAnnouncementCommandHandler>();
+            services.AddScoped<ICommandHandler<UpdateAdvertisementCommand>, UpdateAnnouncementCommandHandler>();
+            services.AddScoped<ICommandHandler<SaveAdvertisementCommand>, SaveAnnouncementCommandHandler>();
         }
     }
 }

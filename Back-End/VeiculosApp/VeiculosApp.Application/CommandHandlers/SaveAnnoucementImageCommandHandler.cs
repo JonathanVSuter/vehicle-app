@@ -5,24 +5,24 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class SaveAnnoucementImageCommandHandler : ICommandHandler<SaveAnnouncementImageCommand>
+    public class SaveAnnoucementImageCommandHandler : ICommandHandler<SaveAdvertisementImageCommand>
     {
-        public readonly IAnnouncementRepository _announcementRepository;
-        public readonly IAnnouncementImageRepository _announcementImageRepository;
+        public readonly IAdvertisementRepository _announcementRepository;
+        public readonly IAdvertisementImageRepository _announcementImageRepository;
 
-        public SaveAnnoucementImageCommandHandler(IAnnouncementRepository announcementRepository, IAnnouncementImageRepository vehicleImageRepository)
+        public SaveAnnoucementImageCommandHandler(IAdvertisementRepository announcementRepository, IAdvertisementImageRepository vehicleImageRepository)
         {
             _announcementRepository = announcementRepository;
             _announcementImageRepository = vehicleImageRepository;
         }
 
-        public void Handle(SaveAnnouncementImageCommand command)
+        public void Handle(SaveAdvertisementImageCommand command)
         {            
-            foreach (var image in command.AnnouncementImages)
+            foreach (var image in command.AdvertisementImages)
             {
-                var announcement = _announcementRepository.GetById(image.IdAnnouncement);
+                var announcement = _announcementRepository.GetById(image.IdAdvertisement);
 
-                if (announcement == null) throw new NotFoundAnnoucementException($"No announcement founded with informed Id: {image.IdAnnouncement}");
+                if (announcement == null) throw new NotFoundAnnoucementException($"No announcement founded with informed Id: {image.IdAdvertisement}");
                 
                 _announcementImageRepository.Save(image);
             }

@@ -2,7 +2,7 @@
 
 namespace VeiculosApp.Core.Domain.Repositories
 {
-    public interface IAnnouncementRepository : IBaseRepository<Announcement>
+    public interface IAdvertisementRepository : IBaseRepository<Advertisement>
     {
     }
 }

@@ -9,7 +9,7 @@ namespace VeiculosApp.Core.Domain.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
-        public IList<Announcement> Announcements { get; set; }
+        public IList<Advertisement> Advertisements { get; set; }
         public void Update(User user) 
         {
             Name = user.Name;

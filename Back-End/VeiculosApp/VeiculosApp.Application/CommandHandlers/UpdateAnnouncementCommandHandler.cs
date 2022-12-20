@@ -10,14 +10,14 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class UpdateAnnouncementCommandHandler : ICommandHandler<UpdateAnnouncementCommand>
+    public class UpdateAnnouncementCommandHandler : ICommandHandler<UpdateAdvertisementCommand>
     {
-        private readonly IAnnouncementRepository _announcementRepository;
-        private readonly IAnnouncementImageRepository _announcementImageRepository;
+        private readonly IAdvertisementRepository _announcementRepository;
+        private readonly IAdvertisementImageRepository _announcementImageRepository;
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IUserRepository _userRepository;
 
-        public UpdateAnnouncementCommandHandler(IAnnouncementRepository announcementRepository, IAnnouncementImageRepository announcementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
+        public UpdateAnnouncementCommandHandler(IAdvertisementRepository announcementRepository, IAdvertisementImageRepository announcementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
         {
             _announcementRepository = announcementRepository;
             _announcementImageRepository = announcementImageRepository;
@@ -25,29 +25,29 @@ namespace VeiculosApp.Application.CommandHandlers
             _userRepository = userRepository;
         }
 
-        public void Handle(UpdateAnnouncementCommand command)
+        public void Handle(UpdateAdvertisementCommand command)
         {
-            var announcement = _announcementRepository.GetById(command.Announcement.Id);
-            if (announcement == null) throw new NotFoundAnnoucementException($"There's no Announcement with Id = {command.Announcement.Id}");
+            var announcement = _announcementRepository.GetById(command.Advertisement.Id);
+            if (announcement == null) throw new NotFoundAnnoucementException($"There's no Announcement with Id = {command.Advertisement.Id}");
 
-            var vehicle = _vehicleRepository.GetById(command.Announcement.IdVehicle);
+            var vehicle = _vehicleRepository.GetById(command.Advertisement.IdVehicle);
 
-            if (vehicle == null) throw new NotFoundVehicleException($"There's no Vehicle with Id = {command.Announcement.IdVehicle}");
+            if (vehicle == null) throw new NotFoundVehicleException($"There's no Vehicle with Id = {command.Advertisement.IdVehicle}");
 
             announcement.Vehicle = vehicle;
 
-            var images = _announcementImageRepository.GetAllAnnoucementImagesByAnnoucementId(command.Announcement.Id);
+            var images = _announcementImageRepository.GetAllAnnoucementImagesByAnnoucementId(command.Advertisement.Id);
 
-            var user = _userRepository.GetById(command.Announcement.IdUser);
+            var user = _userRepository.GetById(command.Advertisement.IdUser);
 
-            if (user == null) throw new NotFoundUserException($"There's no User with Id = {command.Announcement.IdUser}");
+            if (user == null) throw new NotFoundUserException($"There's no User with Id = {command.Advertisement.IdUser}");
 
             announcement.User = user;
 
             if(images == null)
             {
-                announcement.Images = new List<AnnouncementImage>();
-                foreach (var image in command.Announcement.Images)
+                announcement.Images = new List<AdvertisementImage>();
+                foreach (var image in command.Advertisement.Images)
                 {
                     if(image.Id <= 0) 
                         _announcementImageRepository.Save(image);
@@ -56,7 +56,7 @@ namespace VeiculosApp.Application.CommandHandlers
             }
             else
             {
-                var imagesToRemove = command.Announcement.Images.Where(x=> announcement.Images.All(y=> y.Id != x.Id));
+                var imagesToRemove = command.Advertisement.Images.Where(x=> announcement.Images.All(y=> y.Id != x.Id));
                 foreach(var image in imagesToRemove) 
                 {
                     _announcementImageRepository.Remove(image);

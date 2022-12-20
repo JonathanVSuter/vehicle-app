@@ -31,15 +31,15 @@ namespace VeiculosApp.Controllers
         [HttpDelete()]
         public IActionResult Remove([FromQuery] int id)
         {
-            var commandRemove = new RemoveAnnouncementImageCommand(id);
+            var commandRemove = new RemoveAdvertisementImageCommand(id);
             _commandDispatcher.Dispatch(commandRemove);
             return NoContent();
         }
         [HttpPut()]
         public IActionResult Update([FromBody] UpdateAnnouncementImageViewModel updateVehicleViewModel)
         {
-            var vehicle = _mapper.Map<IList<AnnouncementImage>>(updateVehicleViewModel.AnnouncementImages);
-            var command = new UpdateAnnouncementImageCommand(vehicle);
+            var vehicle = _mapper.Map<IList<AdvertisementImage>>(updateVehicleViewModel.AnnouncementImages);
+            var command = new UpdateAdvertisementImageCommand(vehicle);
             _commandDispatcher.Dispatch(command);
 
             return NoContent();
@@ -48,9 +48,9 @@ namespace VeiculosApp.Controllers
         [HttpPost()]
         public IActionResult Save([FromBody] SaveAnnouncementImageViewModel saveVehicleViewModel)
         {
-            var vehicle = _mapper.Map<IList<AnnouncementImage>>(saveVehicleViewModel.VehicleImage);
+            var vehicle = _mapper.Map<IList<AdvertisementImage>>(saveVehicleViewModel.VehicleImage);
 
-            var command = new SaveAnnouncementImageCommand(vehicle);
+            var command = new SaveAdvertisementImageCommand(vehicle);
             _commandDispatcher.Dispatch(command);
 
             return CreatedAtAction(nameof(AnnouncementImageController.Save), nameof(AnnouncementImageController));
@@ -62,11 +62,11 @@ namespace VeiculosApp.Controllers
         {
             var query = new GetByTermAnnouncementImageQuery(term);
 
-            var vehicles = _queryExecutor.Execute<GetByTermAnnouncementImageQuery, IList<AnnouncementImage>>(query);
+            var vehicles = _queryExecutor.Execute<GetByTermAnnouncementImageQuery, IList<AdvertisementImage>>(query);
 
             if (vehicles != null && vehicles.Any())
             {
-                var result = _mapper.Map<IList<AnnouncementImageDto>>(vehicles);
+                var result = _mapper.Map<IList<AdvertisementImageDto>>(vehicles);
                 return Ok(new { result });
             }
             return NoContent();
@@ -77,11 +77,11 @@ namespace VeiculosApp.Controllers
         {
             var query = new GetAllAnnouncementImagesQuery();
 
-            var vehicles = _queryExecutor.Execute<GetAllAnnouncementImagesQuery, IList<AnnouncementImage>>(query);
+            var vehicles = _queryExecutor.Execute<GetAllAnnouncementImagesQuery, IList<AdvertisementImage>>(query);
 
             if (vehicles != null && vehicles.Any())
             {
-                var result = _mapper.Map<IList<AnnouncementImageDto>>(vehicles);
+                var result = _mapper.Map<IList<AdvertisementImageDto>>(vehicles);
 
                 return Ok(new { result });
             }
@@ -93,11 +93,11 @@ namespace VeiculosApp.Controllers
         public IActionResult GetById([FromQuery] int id)
         {
             var query = new GetByIdAnnouncementImageQuery(id);
-            var vehicle = _queryExecutor.Execute<GetByIdAnnouncementImageQuery, AnnouncementImage>(query);
+            var vehicle = _queryExecutor.Execute<GetByIdAnnouncementImageQuery, AdvertisementImage>(query);
 
             if (vehicle != null)
             {
-                var result = _mapper.Map<AnnouncementImageDto>(vehicle);
+                var result = _mapper.Map<AdvertisementImageDto>(vehicle);
                 return Ok(new { result });
             }
             return NoContent();

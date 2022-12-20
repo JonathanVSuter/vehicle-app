@@ -9,16 +9,16 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.QueryHandlers
 {
-    public class GetAllAnnouncementImagesQueryHandler : IQueryHandler<GetAllAnnouncementImagesQuery, IList<AnnouncementImage>>
+    public class GetAllAnnouncementImagesQueryHandler : IQueryHandler<GetAllAnnouncementImagesQuery, IList<AdvertisementImage>>
     {
-        public readonly IAnnouncementImageRepository _announcementImageRepository;
+        public readonly IAdvertisementImageRepository _announcementImageRepository;
 
-        public GetAllAnnouncementImagesQueryHandler(IAnnouncementImageRepository announcementImageRepository)
+        public GetAllAnnouncementImagesQueryHandler(IAdvertisementImageRepository announcementImageRepository)
         {
             _announcementImageRepository = announcementImageRepository;
         }
 
-        public IList<AnnouncementImage> Execute(GetAllAnnouncementImagesQuery query)
+        public IList<AdvertisementImage> Execute(GetAllAnnouncementImagesQuery query)
         {
             var result = _announcementImageRepository.GetAll().ToList();
             return result;

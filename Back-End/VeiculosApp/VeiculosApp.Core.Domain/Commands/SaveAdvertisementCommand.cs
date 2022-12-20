@@ -6,12 +6,12 @@ using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Commands
 {
-    public class SaveAnnouncementCommand : ICommand
+    public class SaveAdvertisementCommand : ICommand
     {
-        public Announcement Announcement { get; set; }
-        public SaveAnnouncementCommand(Announcement announcement)
+        public Advertisement Advertisement { get; set; }
+        public SaveAdvertisementCommand(Advertisement advertisement)
         {
-            Announcement = announcement;
+            Advertisement = advertisement;
         }
     }
 }

@@ -6,6 +6,6 @@ namespace VeiculosApp.ViewModels.Vehicle
     public class SaveVehicleViewModel
     {
         public VehicleDto Vehicle { get; set; }
-        public IList<AnnouncementImageDto> VehicleImages { get; set; }
+        public IList<AdvertisementImageDto> VehicleImages { get; set; }
     }
 }

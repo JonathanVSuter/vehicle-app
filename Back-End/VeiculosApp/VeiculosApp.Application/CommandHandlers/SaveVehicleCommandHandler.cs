@@ -8,9 +8,9 @@ namespace VeiculosApp.Application.CommandHandlers
     public class SaveVehicleCommandHandler : ICommandHandlerWithResult<SaveVehicleCommand, Vehicle>
     {
         private readonly IVehicleRepository _vehicleRepository;
-        private readonly IAnnouncementImageRepository _vehicleImageRepository;
+        private readonly IAdvertisementImageRepository _vehicleImageRepository;
 
-        public SaveVehicleCommandHandler(IVehicleRepository vehicleRepository, IAnnouncementImageRepository vehicleImageRepository)
+        public SaveVehicleCommandHandler(IVehicleRepository vehicleRepository, IAdvertisementImageRepository vehicleImageRepository)
         {
             _vehicleRepository = vehicleRepository;
             _vehicleImageRepository = vehicleImageRepository;

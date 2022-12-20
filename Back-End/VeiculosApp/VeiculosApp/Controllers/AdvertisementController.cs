@@ -1,10 +1,15 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using VeiculosApp.Authentication;
 using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Commands;
+using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
+using VeiculosApp.Core.Domain.Queries;
 using VeiculosApp.Core.Domain.Services;
 using VeiculosApp.ViewModels.Announcement;
 
@@ -12,61 +17,62 @@ namespace VeiculosApp.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class AnnouncementController : ControllerBase
+    [Authorize]
+    public class AdvertisementController : ControllerBase
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryExecutor _queryExecutor;
         private readonly IMapper _mapper;
         private readonly ITokenService _tokenService;
 
-        public AnnouncementController(ICommandDispatcher commandDispatcher, IQueryExecutor queryExecutor, IMapper mapper, ITokenService tokenService)
+        public AdvertisementController(ICommandDispatcher commandDispatcher, IQueryExecutor queryExecutor, IMapper mapper, ITokenService tokenService)
         {
             _commandDispatcher = commandDispatcher;
             _queryExecutor = queryExecutor;
             _mapper = mapper;
             _tokenService = tokenService;
         }
-        [Authorize]
+        [Authorize(Roles = "ADMIN,Normal")]
         [HttpDelete()]
         public IActionResult Remove([FromQuery] int id)
         {
-            var commandRemove = new RemoveAnnouncementCommand(id);
+            var commandRemove = new RemoveAdvertisementCommand(id);
             _commandDispatcher.Dispatch(commandRemove);
             return NoContent();
         }
-        [Authorize]
+        [Authorize(Roles = "ADMIN,Normal")]
         [HttpPut()]
-        public IActionResult Update([FromBody] UpdateAnnoucementViewModel updateAnnoucementViewModel)
+        public IActionResult Update([FromBody] UpdateAdvertisementViewModel updateAnnoucementViewModel)
         {
-            var announcement = _mapper.Map<Announcement>(updateAnnoucementViewModel.Annoucement);
-            var command = new UpdateAnnouncementCommand(announcement);
+            var announcement = _mapper.Map<Advertisement>(updateAnnoucementViewModel.Annoucement);
+            var command = new UpdateAdvertisementCommand(announcement);
             _commandDispatcher.Dispatch(command);
             return NoContent();
         }
-        [Authorize]
+        [Authorize(Roles = "ADMIN,Normal")]
         [HttpPost()]
-        public IActionResult Save([FromBody] SaveAnnoucementViewModel saveAnnoucementViewModel)
+        public IActionResult Save([FromBody] SaveAdvertisementViewModel saveAnnoucementViewModel)
         {
-            var announcement = _mapper.Map<Announcement>(saveAnnoucementViewModel.Announcement);
-            var command = new SaveAnnouncementCommand(announcement);
+            var announcement = _mapper.Map<Advertisement>(saveAnnoucementViewModel.Announcement);
+            var command = new SaveAdvertisementCommand(announcement);
             _commandDispatcher.Dispatch(command);
 
-            return Created(nameof(AnnouncementController.Save), nameof(AnnouncementController));
+            return Created(nameof(AdvertisementController.Save), nameof(AdvertisementController));
         }
-
-        //[HttpGet()]
-        //[Route("getby")]
-        //public IActionResult GetBy([FromQuery] string term)
-        //{
-        //    var query = new GetByTermUserQuery(term);
-        //    var users = _queryExecutor.Execute<GetByTermUserQuery, IList<User>>(query);
-        //    if (users != null && users.Any())
-        //    {
-        //        var result = _mapper.Map<IList<User>>(users);
-        //        return Ok(new { result });
-        //    }
-        //    return NoContent();
-        //}
+        [Authorize(Roles = "ADMIN,Normal")]
+        [HttpGet()]
+        [Route("getby")]
+        public IActionResult GetBy([FromQuery] string term)
+        {
+            var query = new GetByTermAdvertisementQuery(term);
+            var annoucements = _queryExecutor.Execute<GetByTermAdvertisementQuery, IList<Advertisement>>(query);
+            if (annoucements != null && annoucements.Any())
+            {
+                var result = _mapper.Map<IList<AdvertisementDto>>(annoucements);
+                return Ok(new { result });
+            }
+            return NoContent();
+        }
 
         //[HttpGet()]
         //public IActionResult GetAll()

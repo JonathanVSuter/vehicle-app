@@ -8,8 +8,8 @@ namespace VeiculosApp.Application.CommandHandlers
     public class RemoveVehicleCommandHandler : ICommandHandler<RemoveVehicleCommand>
     {
         private readonly IVehicleRepository _vehicleRepository;
-        private readonly IAnnouncementImageRepository _vehicleImageRepository;
-        public RemoveVehicleCommandHandler(IVehicleRepository vehicleRepository, IAnnouncementImageRepository vehicleImageRepository)
+        private readonly IAdvertisementImageRepository _vehicleImageRepository;
+        public RemoveVehicleCommandHandler(IVehicleRepository vehicleRepository, IAdvertisementImageRepository vehicleImageRepository)
         {
             _vehicleRepository = vehicleRepository;
             _vehicleImageRepository = vehicleImageRepository;

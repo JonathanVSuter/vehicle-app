@@ -6,20 +6,20 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Infra.Repositories.EF
 {
-    public class AnnoucementImageRepository : BaseRepository<AnnouncementImage>, IAnnouncementImageRepository
+    public class AdvertisementImageRepository : BaseRepository<AdvertisementImage>, IAdvertisementImageRepository
     {
-        public AnnoucementImageRepository(AppVehiclesDbContext appVehiclesDbContext) : base(appVehiclesDbContext)
+        public AdvertisementImageRepository(AppVehiclesDbContext appVehiclesDbContext) : base(appVehiclesDbContext)
         {
         }        
 
-        public IList<AnnouncementImage> GetAllAnnoucementImagesByAnnoucementId(int idAnnoucement)
+        public IList<AdvertisementImage> GetAllAnnoucementImagesByAnnoucementId(int idAnnoucement)
         {
-            var result = _appVehiclesDbContext.Set<AnnouncementImage>().Where(x => x.IdAnnouncement == idAnnoucement).ToList();
+            var result = _appVehiclesDbContext.Set<AdvertisementImage>().Where(x => x.IdAdvertisement == idAnnoucement).ToList();
 
             return result;
         }
 
-        public IList<AnnouncementImage> GetAllAnnouncementImagesByTerm(string term)
+        public IList<AdvertisementImage> GetAllAnnouncementImagesByTerm(string term)
         {
             var sql = @"SELECT [Id]
                           ,[Name]
@@ -32,7 +32,7 @@ namespace VeiculosApp.Infra.Repositories.EF
                       FROM [dbo].[AnnouncementImages]
                       WHERE CONCAT(Id,Name,Description) like CONCAT('%',@term,'%')";
 
-            var result = _appVehiclesDbContext.Set<AnnouncementImage>().FromSqlRaw(sql, new { term }).ToList();
+            var result = _appVehiclesDbContext.Set<AdvertisementImage>().FromSqlRaw(sql, new { term }).ToList();
             return result;
         }
     }

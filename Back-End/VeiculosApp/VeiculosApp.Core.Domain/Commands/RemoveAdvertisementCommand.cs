@@ -5,12 +5,12 @@ using VeiculosApp.Core.Common.Command;
 
 namespace VeiculosApp.Core.Domain.Commands
 {
-    public class RemoveAnnouncementImageCommand : ICommand
+    public class RemoveAdvertisementCommand : ICommand
     {
         public int Id { get; set; }
-        public RemoveAnnouncementImageCommand(int id)
+        public RemoveAdvertisementCommand(int id)
         {
-            if (id <= 0) throw new ArgumentOutOfRangeException($"");
+            if(id<=0) throw new ArgumentOutOfRangeException($"Parameter {nameof(id)} could not be less or equal zero.");
             Id = id;
         }
     }

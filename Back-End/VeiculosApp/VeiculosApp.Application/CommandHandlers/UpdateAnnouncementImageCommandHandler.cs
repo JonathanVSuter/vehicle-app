@@ -8,13 +8,13 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class UpdateAnnouncementImageCommandHandler : ICommandHandler<UpdateAnnouncementImageCommand>
+    public class UpdateAnnouncementImageCommandHandler : ICommandHandler<UpdateAdvertisementImageCommand>
     {        
-        public readonly IAnnouncementImageRepository _announcementImageRepository;
+        public readonly IAdvertisementImageRepository _announcementImageRepository;
 
-        public void Handle(UpdateAnnouncementImageCommand command)
+        public void Handle(UpdateAdvertisementImageCommand command)
         {
-            foreach (var item in command.AnnoucementImages) 
+            foreach (var item in command.AdvertisementImages) 
             {
                 var annoucementImage = _announcementImageRepository.GetById(item.Id);
 

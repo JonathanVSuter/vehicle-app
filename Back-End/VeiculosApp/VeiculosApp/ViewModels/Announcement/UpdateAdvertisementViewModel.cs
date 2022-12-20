@@ -6,8 +6,8 @@ using VeiculosApp.Core.Domain.Dtos;
 
 namespace VeiculosApp.ViewModels.Announcement
 {
-    public class UpdateAnnoucementViewModel
+    public class UpdateAdvertisementViewModel
     {
-        public AnnouncementDto Annoucement { get; set; }
+        public AdvertisementDto Annoucement { get; set; }
     }
 }

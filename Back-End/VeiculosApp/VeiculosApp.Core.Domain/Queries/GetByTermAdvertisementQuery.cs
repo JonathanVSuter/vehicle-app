@@ -6,10 +6,10 @@ using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Queries
 {
-    public class GetByTermAnnouncementImageQuery : IQuery<IList<AdvertisementImage>>
+    public class GetByTermAdvertisementQuery : IQuery<IList<Advertisement>>
     {
         public string Term { get; set; }
-        public GetByTermAnnouncementImageQuery(string term)
+        public GetByTermAdvertisementQuery(string term)
         {
             Term = term;
         }

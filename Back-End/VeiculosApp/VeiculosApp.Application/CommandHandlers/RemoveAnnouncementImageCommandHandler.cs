@@ -8,16 +8,16 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class RemoveAnnouncementImageCommandHandler : ICommandHandler<RemoveAnnouncementImageCommand>
+    public class RemoveAnnouncementImageCommandHandler : ICommandHandler<RemoveAdvertisementImageCommand>
     {
-        private readonly IAnnouncementImageRepository _announcementImageRepository;
+        private readonly IAdvertisementImageRepository _announcementImageRepository;
 
-        public RemoveAnnouncementImageCommandHandler(IAnnouncementImageRepository announcementImageRepository)
+        public RemoveAnnouncementImageCommandHandler(IAdvertisementImageRepository announcementImageRepository)
         {
             _announcementImageRepository = announcementImageRepository;
         }
 
-        public void Handle(RemoveAnnouncementImageCommand command)
+        public void Handle(RemoveAdvertisementImageCommand command)
         {
             var image = _announcementImageRepository.GetById(command.Id);
 

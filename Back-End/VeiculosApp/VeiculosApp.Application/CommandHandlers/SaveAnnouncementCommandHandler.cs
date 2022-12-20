@@ -9,14 +9,14 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class SaveAnnouncementCommandHandler : ICommandHandler<SaveAnnouncementCommand>
+    public class SaveAnnouncementCommandHandler : ICommandHandler<SaveAdvertisementCommand>
     {
-        private readonly IAnnouncementRepository _announcementRepository;
-        private readonly IAnnouncementImageRepository _announcementImageRepository;
+        private readonly IAdvertisementRepository _announcementRepository;
+        private readonly IAdvertisementImageRepository _announcementImageRepository;
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IUserRepository _userRepository;
 
-        public SaveAnnouncementCommandHandler(IAnnouncementRepository announcementRepository, IAnnouncementImageRepository announcementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
+        public SaveAnnouncementCommandHandler(IAdvertisementRepository announcementRepository, IAdvertisementImageRepository announcementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
         {
             _announcementRepository = announcementRepository;
             _announcementImageRepository = announcementImageRepository;
@@ -24,17 +24,17 @@ namespace VeiculosApp.Application.CommandHandlers
             _userRepository = userRepository;
         }
 
-        public void Handle(SaveAnnouncementCommand command)
+        public void Handle(SaveAdvertisementCommand command)
         {            
-            var vehicle = _vehicleRepository.GetById(command.Announcement.IdVehicle);
+            var vehicle = _vehicleRepository.GetById(command.Advertisement.IdVehicle);
 
-            if (vehicle == null) throw new NotFoundVehicleException($"There's no Vehicle with Id = {command.Announcement.IdVehicle}");
+            if (vehicle == null) throw new NotFoundVehicleException($"There's no Vehicle with Id = {command.Advertisement.IdVehicle}");
 
-            var user = _userRepository.GetById(command.Announcement.IdUser);
+            var user = _userRepository.GetById(command.Advertisement.IdUser);
 
-            if (user == null) throw new NotFoundUserException($"There's no User with Id = {command.Announcement.IdUser}");
+            if (user == null) throw new NotFoundUserException($"There's no User with Id = {command.Advertisement.IdUser}");
 
-            _announcementRepository.Save(command.Announcement);            
+            _announcementRepository.Save(command.Advertisement);            
         }
     }
 }

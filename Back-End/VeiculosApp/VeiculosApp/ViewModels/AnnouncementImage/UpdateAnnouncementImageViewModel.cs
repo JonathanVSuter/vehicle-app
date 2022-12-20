@@ -6,6 +6,6 @@ namespace VeiculosApp.ViewModels.AnnouncementImage
     public class UpdateAnnouncementImageViewModel
     {
         public int Id { get; set;}
-        public IList<AnnouncementImageDto> AnnouncementImages { get; set; }
+        public IList<AdvertisementImageDto> AnnouncementImages { get; set; }
     }
 }
