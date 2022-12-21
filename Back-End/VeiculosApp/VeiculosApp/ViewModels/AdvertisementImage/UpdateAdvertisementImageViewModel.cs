@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using VeiculosApp.Core.Domain.Dtos;
 
-namespace VeiculosApp.ViewModels.AnnouncementImage
+namespace VeiculosApp.ViewModels.AdvertisementImage
 {
-    public class UpdateAnnouncementImageViewModel
+    public class UpdateAdvertisementImageViewModel
     {
         public int Id { get; set;}
         public IList<AdvertisementImageDto> AnnouncementImages { get; set; }

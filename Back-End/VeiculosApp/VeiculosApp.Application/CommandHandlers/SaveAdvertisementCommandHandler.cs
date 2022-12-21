@@ -9,17 +9,17 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class SaveAnnouncementCommandHandler : ICommandHandler<SaveAdvertisementCommand>
+    public class SaveAdvertisementCommandHandler : ICommandHandler<SaveAdvertisementCommand>
     {
-        private readonly IAdvertisementRepository _announcementRepository;
-        private readonly IAdvertisementImageRepository _announcementImageRepository;
+        private readonly IAdvertisementRepository _advertisementRepository;
+        private readonly IAdvertisementImageRepository _advertisementImageRepository;
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IUserRepository _userRepository;
 
-        public SaveAnnouncementCommandHandler(IAdvertisementRepository announcementRepository, IAdvertisementImageRepository announcementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
+        public SaveAdvertisementCommandHandler(IAdvertisementRepository advertisementRepository, IAdvertisementImageRepository advertisementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
         {
-            _announcementRepository = announcementRepository;
-            _announcementImageRepository = announcementImageRepository;
+            _advertisementRepository = advertisementRepository;
+            _advertisementImageRepository = advertisementImageRepository;
             _vehicleRepository = vehicleRepository;
             _userRepository = userRepository;
         }
@@ -34,7 +34,7 @@ namespace VeiculosApp.Application.CommandHandlers
 
             if (user == null) throw new NotFoundUserException($"There's no User with Id = {command.Advertisement.IdUser}");
 
-            _announcementRepository.Save(command.Advertisement);            
+            _advertisementRepository.Save(command.Advertisement);            
         }
     }
 }

@@ -8,21 +8,21 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class UpdateAnnouncementImageCommandHandler : ICommandHandler<UpdateAdvertisementImageCommand>
+    public class UpdateAdvertisementImageCommandHandler : ICommandHandler<UpdateAdvertisementImageCommand>
     {        
-        public readonly IAdvertisementImageRepository _announcementImageRepository;
+        public readonly IAdvertisementImageRepository _advertisementImageRepository;
 
         public void Handle(UpdateAdvertisementImageCommand command)
         {
             foreach (var item in command.AdvertisementImages) 
             {
-                var annoucementImage = _announcementImageRepository.GetById(item.Id);
+                var annoucementImage = _advertisementImageRepository.GetById(item.Id);
 
                 if (annoucementImage == null) throw new NotFoundAnnoucementImageException($"There's no image with id = {item.Id}");
 
                 item.UpdateImage(annoucementImage);
 
-                _announcementImageRepository.Update(item);
+                _advertisementImageRepository.Update(item);
             }
         }
     }

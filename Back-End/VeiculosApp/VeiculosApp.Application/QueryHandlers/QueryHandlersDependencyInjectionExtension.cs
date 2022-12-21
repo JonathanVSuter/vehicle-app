@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
@@ -14,13 +15,13 @@ namespace VeiculosApp.Application.QueryHandlers
             services.AddScoped<IQueryHandler<GetAllVehicleQuery, IList<Vehicle>>, GetAllVehiclesQueryHandler>();
             services.AddScoped<IQueryHandler<GetByIdVehicleQuery, Vehicle>, GetByIdVehicleQueryHandler>();
             services.AddScoped<IQueryHandler<GetByVehicleQuery, IList<Vehicle>>, GetByVehicleQueryHandler>();
-            services.AddScoped<IQueryHandler<GetByIdAnnouncementImageQuery, AdvertisementImage>, GetByIdAnnouncementImageQueryHandler>();
+            services.AddScoped<IQueryHandler<GetByIdAdvertisementImageQuery, AdvertisementImage>, GetByIdAnnouncementImageQueryHandler>();
             services.AddScoped<IQueryHandler<GetByTermAnnouncementImageQuery, IList<AdvertisementImage>>, GetByTermAnnouncementImageQueryHandler>();
-            services.AddScoped<IQueryHandler<GetAllAnnouncementImagesQuery, IList<AdvertisementImage>>, GetAllAnnouncementImagesQueryHandler>();
+            services.AddScoped<IQueryHandler<GetAllAnnouncementImagesQuery, IList<AdvertisementImage>>, GetAllAdvertisementImagesQueryHandler>();
             services.AddScoped<IQueryHandler<GetAllUsersQuery, IList<User>>, GetAllUsersQueryHandler>();
             services.AddScoped<IQueryHandler<GetByIdUserQuery, User>, GetByIdUserQueryHandler>();
             services.AddScoped<IQueryHandler<GetByTermUserQuery, IList<User>>, GetByTermUserQueryHandler>();
-            services.AddScoped<IQueryHandler<LoginQuery, LoginSucessDto>, LoginQueryHandler>();
+            services.AddScoped<IQueryHandler<LoginQuery, Task<LoginSucessDto>>, LoginQueryHandler>();
         }
     }
 }

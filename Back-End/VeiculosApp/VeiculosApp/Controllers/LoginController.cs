@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Queries;
@@ -9,7 +11,7 @@ namespace VeiculosApp.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class LoginController : CustomController
     {
         private readonly IQueryExecutor _queryExecutor;
 
@@ -20,10 +22,11 @@ namespace VeiculosApp.Controllers
 
         [AllowAnonymous]        
         [HttpPost()]
-        public IActionResult Login([FromBody] LoginViewModel loginViewModel)
+        public async Task<IActionResult> Login([FromBody] LoginViewModel loginViewModel)
         {
             var query = new LoginQuery(loginViewModel.Login.Email, loginViewModel.Login.Password);
-            var result = _queryExecutor.Execute<LoginQuery, LoginSucessDto>(query);
+            var result = await _queryExecutor.ExecuteAsync<LoginQuery, LoginSucessDto>(query).ConfigureAwait(true);
+                                    
             return Ok(result);
         }
 

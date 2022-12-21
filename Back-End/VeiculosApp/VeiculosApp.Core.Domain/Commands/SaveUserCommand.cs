@@ -20,7 +20,7 @@ namespace VeiculosApp.Core.Domain.Commands
             if (user.Email == " ") throw new ArgumentException($"User e-mail could not be whitespace.");
             if (user.Password == string.Empty) throw new ArgumentException($"User password could not be empty.");
             if (user.Password == null) throw new ArgumentNullException($"User password could not be null.");
-            if (user.Password == " ") throw new ArgumentException($"User password could not be whitespace.");
+            if (user.Password == " ") throw new ArgumentException($"User password could not be whitespace.");            
 
             User = user;
         }

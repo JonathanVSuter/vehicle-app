@@ -8,22 +8,22 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class RemoveAnnouncementImageCommandHandler : ICommandHandler<RemoveAdvertisementImageCommand>
+    public class RemoveAdvertisementImageCommandHandler : ICommandHandler<RemoveAdvertisementImageCommand>
     {
-        private readonly IAdvertisementImageRepository _announcementImageRepository;
+        private readonly IAdvertisementImageRepository _advertisementImageRepository;
 
-        public RemoveAnnouncementImageCommandHandler(IAdvertisementImageRepository announcementImageRepository)
+        public RemoveAdvertisementImageCommandHandler(IAdvertisementImageRepository announcementImageRepository)
         {
-            _announcementImageRepository = announcementImageRepository;
+            _advertisementImageRepository = announcementImageRepository;
         }
 
         public void Handle(RemoveAdvertisementImageCommand command)
         {
-            var image = _announcementImageRepository.GetById(command.Id);
+            var image = _advertisementImageRepository.GetById(command.Id);
 
             if (image == null) throw new NotFoundAnnoucementImageException($"There's no announcement image with Id ={command.Id}");
 
-            _announcementImageRepository.Remove(image);
+            _advertisementImageRepository.Remove(image);
         }
     }
 }

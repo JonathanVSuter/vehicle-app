@@ -10,16 +10,16 @@ namespace VeiculosApp.Application.CommandHandlers
         public static void AddCommandHandlers(this IServiceCollection services)
         {
             services.AddScoped<ICommandHandlerWithResult<SaveVehicleCommand, Vehicle>, SaveVehicleCommandHandler>();
-            services.AddScoped<ICommandHandler<SaveAdvertisementImageCommand>, SaveAnnoucementImageCommandHandler>();
+            services.AddScoped<ICommandHandler<SaveAdvertisementImageCommand>, SaveAdvertisementImageCommandHandler>();
             services.AddScoped<ICommandHandler<RemoveVehicleCommand>, RemoveVehicleCommandHandler>();
             services.AddScoped<ICommandHandler<UpdateVehicleCommand>, UpdateVehicleCommandHandler>();
-            services.AddScoped<ICommandHandler<RemoveAdvertisementImageCommand>, RemoveAnnouncementImageCommandHandler>();            
+            services.AddScoped<ICommandHandler<RemoveAdvertisementImageCommand>, RemoveAdvertisementImageCommandHandler>();            
             services.AddScoped<ICommandHandler<RemoveUserCommand>, RemoveUserCommandHandler>();
             services.AddScoped<ICommandHandler<UpdateUserCommand>, UpdateUserCommandHandler>();
-            services.AddScoped<ICommandHandler<SaveUserCommand>, SaveUserCommandHandler>();            
-            services.AddScoped<ICommandHandler<RemoveAdvertisementCommand>, RemoveAnnouncementCommandHandler>();
-            services.AddScoped<ICommandHandler<UpdateAdvertisementCommand>, UpdateAnnouncementCommandHandler>();
-            services.AddScoped<ICommandHandler<SaveAdvertisementCommand>, SaveAnnouncementCommandHandler>();
+            services.AddScoped<ICommandHandlerAsync<SaveUserCommand>, SaveUserCommandHandler>();            
+            services.AddScoped<ICommandHandler<RemoveAdvertisementCommand>, RemoveAdvertisementCommandHandler>();
+            services.AddScoped<ICommandHandler<UpdateAdvertisementCommand>, UpdateAdvertisementCommandHandler>();
+            services.AddScoped<ICommandHandler<SaveAdvertisementCommand>, SaveAdvertisementCommandHandler>();
         }
     }
 }

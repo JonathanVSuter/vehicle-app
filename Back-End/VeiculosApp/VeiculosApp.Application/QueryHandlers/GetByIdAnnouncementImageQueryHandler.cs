@@ -7,7 +7,7 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.QueryHandlers
 {
-    public class GetByIdAnnouncementImageQueryHandler : IQueryHandler<GetByIdAnnouncementImageQuery, AdvertisementImage>
+    public class GetByIdAnnouncementImageQueryHandler : IQueryHandler<GetByIdAdvertisementImageQuery, AdvertisementImage>
     {
         public readonly IAdvertisementImageRepository _announcementImageRepository;
 
@@ -16,7 +16,7 @@ namespace VeiculosApp.Application.QueryHandlers
             _announcementImageRepository = announcementImageRepository;
         }
 
-        public AdvertisementImage Execute(GetByIdAnnouncementImageQuery query)
+        public AdvertisementImage Execute(GetByIdAdvertisementImageQuery query)
         {
             var result = _announcementImageRepository.GetById(query.Id);
             return result;

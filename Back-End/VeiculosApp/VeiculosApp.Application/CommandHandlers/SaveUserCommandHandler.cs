@@ -1,28 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Exceptions;
 using VeiculosApp.Core.Domain.Commands;
-using VeiculosApp.Core.Domain.Repositories;
+using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class SaveUserCommandHandler : ICommandHandler<SaveUserCommand>
-    {
-        private readonly IUserRepository _userRepository;
-
-        public SaveUserCommandHandler(IUserRepository userRepository)
+    public class SaveUserCommandHandler : ICommandHandlerAsync<SaveUserCommand>
+    {        
+        private readonly UserManager<User> _userManager;   
+        public SaveUserCommandHandler(UserManager<User> userManager)
         {
-            _userRepository = userRepository;
+            _userManager = userManager;            
         }
-
-        public void Handle(SaveUserCommand command)
+        public async Task HandleAsync(SaveUserCommand command)
         {
-            var user = _userRepository.GetUserByEmail(command.User.Email);
+            var user = await _userManager.FindByEmailAsync(command.User.Email).ConfigureAwait(true);
+
             if (user != null) throw new EmailInUseException($"This e-mail is already in use by other user.");
 
-            _userRepository.Save(command.User);
+            await _userManager.CreateAsync(command.User, command.User.Password).ConfigureAwait(true);
         }
     }
 }

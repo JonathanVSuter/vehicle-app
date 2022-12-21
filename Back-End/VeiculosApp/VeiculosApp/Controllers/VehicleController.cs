@@ -14,7 +14,7 @@ namespace VeiculosApp.Controllers
 {    
     [Route("[controller]")]
     [ApiController]
-    public class VehicleController : ControllerBase
+    public class VehicleController : CustomController
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryExecutor _queryExecutor;

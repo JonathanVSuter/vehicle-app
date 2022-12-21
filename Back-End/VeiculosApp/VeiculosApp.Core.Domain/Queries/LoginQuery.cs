@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Dtos;
 
 namespace VeiculosApp.Core.Domain.Queries
 {
-    public class LoginQuery : IQuery<LoginSucessDto>
+    public class LoginQuery : IQuery<Task<LoginSucessDto>>
     {
         public string Email { get; set; }
         public string Password { get; set; }

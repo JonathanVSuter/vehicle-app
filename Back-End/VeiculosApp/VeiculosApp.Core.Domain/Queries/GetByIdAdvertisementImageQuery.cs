@@ -7,10 +7,10 @@ using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Queries
 {
-    public class GetByIdAnnouncementImageQuery : IQuery<AdvertisementImage>
+    public class GetByIdAdvertisementImageQuery : IQuery<AdvertisementImage>
     {    
         public int Id { get; set; }
-        public GetByIdAnnouncementImageQuery(int id)
+        public GetByIdAdvertisementImageQuery(int id)
         {
             Id = id;
         }

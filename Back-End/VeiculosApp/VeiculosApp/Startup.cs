@@ -1,16 +1,18 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Reflection;
 using System.Text;
 using VeiculosApp.Application;
 using VeiculosApp.Application.CommandHandlers;
 using VeiculosApp.Application.QueryHandlers;
-using VeiculosApp.Authentication;
 using VeiculosApp.Infra.Repositories.EF;
 using VeiculosApp.Infra.Services;
 using VeiculosApp.Profiles;
@@ -36,27 +38,8 @@ namespace VeiculosApp
             services.AddQueryHandlers();
             services.AddAutoMapper(Assembly.GetAssembly(typeof(VehicleProfile)));
             services.AddServices(Configuration);
-            services.AddCors();            
-
-            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("SecretJWT").Value);
-
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false                    
-                };
-            });            
+            services.AddCors();             
+            services.AddDistributedMemoryCache();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

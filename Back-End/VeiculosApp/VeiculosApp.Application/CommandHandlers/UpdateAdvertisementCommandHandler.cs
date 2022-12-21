@@ -10,25 +10,25 @@ using VeiculosApp.Core.Domain.Repositories;
 
 namespace VeiculosApp.Application.CommandHandlers
 {
-    public class UpdateAnnouncementCommandHandler : ICommandHandler<UpdateAdvertisementCommand>
+    public class UpdateAdvertisementCommandHandler : ICommandHandler<UpdateAdvertisementCommand>
     {
-        private readonly IAdvertisementRepository _announcementRepository;
-        private readonly IAdvertisementImageRepository _announcementImageRepository;
+        private readonly IAdvertisementRepository _advertisementRepository;
+        private readonly IAdvertisementImageRepository _advertisementImageRepository;
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IUserRepository _userRepository;
 
-        public UpdateAnnouncementCommandHandler(IAdvertisementRepository announcementRepository, IAdvertisementImageRepository announcementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
+        public UpdateAdvertisementCommandHandler(IAdvertisementRepository advertisementRepository, IAdvertisementImageRepository advertisementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
         {
-            _announcementRepository = announcementRepository;
-            _announcementImageRepository = announcementImageRepository;
+            _advertisementRepository = advertisementRepository;
+            _advertisementImageRepository = advertisementImageRepository;
             _vehicleRepository = vehicleRepository;
             _userRepository = userRepository;
         }
 
         public void Handle(UpdateAdvertisementCommand command)
         {
-            var announcement = _announcementRepository.GetById(command.Advertisement.Id);
-            if (announcement == null) throw new NotFoundAnnoucementException($"There's no Announcement with Id = {command.Advertisement.Id}");
+            var announcement = _advertisementRepository.GetById(command.Advertisement.Id);
+            if (announcement == null) throw new NotFoundAdvertisementException($"There's no Announcement with Id = {command.Advertisement.Id}");
 
             var vehicle = _vehicleRepository.GetById(command.Advertisement.IdVehicle);
 
@@ -36,7 +36,7 @@ namespace VeiculosApp.Application.CommandHandlers
 
             announcement.Vehicle = vehicle;
 
-            var images = _announcementImageRepository.GetAllAnnoucementImagesByAnnoucementId(command.Advertisement.Id);
+            var images = _advertisementImageRepository.GetAllAdvertisementImagesByAdvertisementId(command.Advertisement.Id);
 
             var user = _userRepository.GetById(command.Advertisement.IdUser);
 
@@ -50,7 +50,7 @@ namespace VeiculosApp.Application.CommandHandlers
                 foreach (var image in command.Advertisement.Images)
                 {
                     if(image.Id <= 0) 
-                        _announcementImageRepository.Save(image);
+                        _advertisementImageRepository.Save(image);
                     announcement.Images.Add(image);
                 }
             }
@@ -59,17 +59,17 @@ namespace VeiculosApp.Application.CommandHandlers
                 var imagesToRemove = command.Advertisement.Images.Where(x=> announcement.Images.All(y=> y.Id != x.Id));
                 foreach(var image in imagesToRemove) 
                 {
-                    _announcementImageRepository.Remove(image);
+                    _advertisementImageRepository.Remove(image);
                 }
 
                 var imagesToAdd = announcement.Images.Where(x => announcement.Images.All(y => y.Id != x.Id));
                 foreach(var image in imagesToAdd)
                 {
-                    _announcementImageRepository.Save(image);
+                    _advertisementImageRepository.Save(image);
                     announcement.Images.Add(image);
                 }
             }
-            _announcementRepository.Save(announcement);
+            _advertisementRepository.Save(announcement);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace VeiculosApp.Core.Domain.Repositories
 {
     public interface IAdvertisementImageRepository : IBaseRepository<AdvertisementImage>
     {
-        IList<AdvertisementImage> GetAllAnnoucementImagesByAnnoucementId(int idAnnoucement);
-        IList<AdvertisementImage> GetAllAnnouncementImagesByTerm(string term);
+        IList<AdvertisementImage> GetAllAdvertisementImagesByAdvertisementId(int idAdvertisement);
+        IList<AdvertisementImage> GetAllAdvertisementImagesByTerm(string term);
     }
 }

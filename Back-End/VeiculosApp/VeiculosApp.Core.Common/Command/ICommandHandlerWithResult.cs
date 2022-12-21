@@ -1,7 +1,9 @@
-﻿namespace VeiculosApp.Core.Common.Command
+﻿using System.Threading.Tasks;
+
+namespace VeiculosApp.Core.Common.Command
 {
     public interface ICommandHandlerWithResult<in T, out TResult>
     {
-        TResult Handle(T command);
+        TResult Handle(T command);        
     }
 }

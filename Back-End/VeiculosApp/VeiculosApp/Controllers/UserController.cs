@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -13,9 +14,10 @@ using VeiculosApp.ViewModels.User;
 
 namespace VeiculosApp.Controllers
 {
-    [Route("[controller]")]    
+    [Route("[controller]")] 
+    [Authorize]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : CustomController
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryExecutor _queryExecutor;

@@ -19,7 +19,7 @@ namespace VeiculosApp.Application.QueryHandlers
 
         public IList<AdvertisementImage> Execute(GetByTermAnnouncementImageQuery query)
         {
-            var images = _announcementImageRepository.GetAllAnnouncementImagesByTerm(query.Term);
+            var images = _announcementImageRepository.GetAllAdvertisementImagesByTerm(query.Term);
             return images;
         }
     }

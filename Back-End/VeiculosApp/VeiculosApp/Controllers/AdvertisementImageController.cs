@@ -9,20 +9,20 @@ using VeiculosApp.Core.Domain.Commands;
 using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
 using VeiculosApp.Core.Domain.Queries;
-using VeiculosApp.ViewModels.AnnouncementImage;
+using VeiculosApp.ViewModels.AdvertisementImage;
 
 namespace VeiculosApp.Controllers
 {
     //TODO: how to send images to backend :https://www.youtube.com/watch?v=COAIN-Z3f4A
     [Route("[controller]")]
     [ApiController]
-    public class AnnouncementImageController : ControllerBase
+    public class AdvertisementImageController : CustomController
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryExecutor _queryExecutor;
         private readonly IMapper _mapper;
 
-        public AnnouncementImageController(ICommandDispatcher commandDispatcher, IQueryExecutor queryExecutor, IMapper mapper)
+        public AdvertisementImageController(ICommandDispatcher commandDispatcher, IQueryExecutor queryExecutor, IMapper mapper)
         {
             _commandDispatcher = commandDispatcher;
             _queryExecutor = queryExecutor;
@@ -36,24 +36,22 @@ namespace VeiculosApp.Controllers
             return NoContent();
         }
         [HttpPut()]
-        public IActionResult Update([FromBody] UpdateAnnouncementImageViewModel updateVehicleViewModel)
+        public IActionResult Update([FromBody] UpdateAdvertisementImageViewModel updateVehicleViewModel)
         {
-            var vehicle = _mapper.Map<IList<AdvertisementImage>>(updateVehicleViewModel.AnnouncementImages);
-            var command = new UpdateAdvertisementImageCommand(vehicle);
+            var images = _mapper.Map<IList<AdvertisementImage>>(updateVehicleViewModel.AnnouncementImages);
+            var command = new UpdateAdvertisementImageCommand(images);
             _commandDispatcher.Dispatch(command);
 
             return NoContent();
         }
         [Authorize]
         [HttpPost()]
-        public IActionResult Save([FromBody] SaveAnnouncementImageViewModel saveVehicleViewModel)
+        public IActionResult Save([FromBody] SaveAdvertisementImageViewModel saveVehicleViewModel)
         {
-            var vehicle = _mapper.Map<IList<AdvertisementImage>>(saveVehicleViewModel.VehicleImage);
-
-            var command = new SaveAdvertisementImageCommand(vehicle);
+            var images = _mapper.Map<IList<AdvertisementImage>>(saveVehicleViewModel.AdvertisementImage);
+            var command = new SaveAdvertisementImageCommand(images);
             _commandDispatcher.Dispatch(command);
-
-            return CreatedAtAction(nameof(AnnouncementImageController.Save), nameof(AnnouncementImageController));
+            return Created(nameof(AdvertisementController.Save), images);
         }
         [Authorize]
         [HttpGet()]
@@ -61,9 +59,7 @@ namespace VeiculosApp.Controllers
         public IActionResult GetBy([FromQuery] string term)
         {
             var query = new GetByTermAnnouncementImageQuery(term);
-
             var vehicles = _queryExecutor.Execute<GetByTermAnnouncementImageQuery, IList<AdvertisementImage>>(query);
-
             if (vehicles != null && vehicles.Any())
             {
                 var result = _mapper.Map<IList<AdvertisementImageDto>>(vehicles);
@@ -92,8 +88,8 @@ namespace VeiculosApp.Controllers
         [Route("getbyid")]
         public IActionResult GetById([FromQuery] int id)
         {
-            var query = new GetByIdAnnouncementImageQuery(id);
-            var vehicle = _queryExecutor.Execute<GetByIdAnnouncementImageQuery, AdvertisementImage>(query);
+            var query = new GetByIdAdvertisementImageQuery(id);
+            var vehicle = _queryExecutor.Execute<GetByIdAdvertisementImageQuery, AdvertisementImage>(query);
 
             if (vehicle != null)
             {

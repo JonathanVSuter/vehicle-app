@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using VeiculosApp.Authentication;
 using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Commands;
@@ -11,26 +11,28 @@ using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
 using VeiculosApp.Core.Domain.Queries;
 using VeiculosApp.Core.Domain.Services;
-using VeiculosApp.ViewModels.Announcement;
+using VeiculosApp.ViewModels.Advertisement;
 
 namespace VeiculosApp.Controllers
 {
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class AdvertisementController : ControllerBase
+    public class AdvertisementController : CustomController
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryExecutor _queryExecutor;
         private readonly IMapper _mapper;
         private readonly ITokenService _tokenService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AdvertisementController(ICommandDispatcher commandDispatcher, IQueryExecutor queryExecutor, IMapper mapper, ITokenService tokenService)
+        public AdvertisementController(ICommandDispatcher commandDispatcher, IQueryExecutor queryExecutor, IMapper mapper, ITokenService tokenService, IHttpContextAccessor httpContextAccessor)
         {
             _commandDispatcher = commandDispatcher;
             _queryExecutor = queryExecutor;
             _mapper = mapper;
             _tokenService = tokenService;
+            _httpContextAccessor = httpContextAccessor;
         }
         [Authorize(Roles = "ADMIN,Normal")]
         [HttpDelete()]
@@ -44,7 +46,7 @@ namespace VeiculosApp.Controllers
         [HttpPut()]
         public IActionResult Update([FromBody] UpdateAdvertisementViewModel updateAnnoucementViewModel)
         {
-            var announcement = _mapper.Map<Advertisement>(updateAnnoucementViewModel.Annoucement);
+            var announcement = _mapper.Map<Advertisement>(updateAnnoucementViewModel.Advertisement);
             var command = new UpdateAdvertisementCommand(announcement);
             _commandDispatcher.Dispatch(command);
             return NoContent();
@@ -53,7 +55,7 @@ namespace VeiculosApp.Controllers
         [HttpPost()]
         public IActionResult Save([FromBody] SaveAdvertisementViewModel saveAnnoucementViewModel)
         {
-            var announcement = _mapper.Map<Advertisement>(saveAnnoucementViewModel.Announcement);
+            var announcement = _mapper.Map<Advertisement>(saveAnnoucementViewModel.Advertisement);
             var command = new SaveAdvertisementCommand(announcement);
             _commandDispatcher.Dispatch(command);
 

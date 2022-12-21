@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using VeiculosApp.Core.Common.Command;
 
 namespace VeiculosApp.Application
@@ -23,6 +24,21 @@ namespace VeiculosApp.Application
 
             var service = _serviceProvider.GetService(typeof(ICommandHandlerWithResult<T, TResult>)) as ICommandHandlerWithResult<T, TResult>;
             return service.Handle(command);
+        }
+        public async Task<TResult> DispatchAsync<T, TResult>(T command) where T : ICommand
+        {
+            if (command == null) throw new ArgumentNullException(nameof(command), "Command cannot be null");
+
+            var service = _serviceProvider.GetService(typeof(ICommandHandlerWithResult<T, Task<TResult>>)) as ICommandHandlerWithResult<T, Task<TResult>>;
+            return  await service.Handle(command).ConfigureAwait(true);
+        }
+
+        public async Task DispatchAsync<T>(T command) where T : ICommand
+        {
+            if (command == null) throw new ArgumentNullException(nameof(command), "Command cannot be null");
+
+            var service = _serviceProvider.GetService(typeof(ICommandHandlerAsync<T>)) as ICommandHandlerAsync<T>;
+            await service.HandleAsync(command).ConfigureAwait(true);
         }
     }
 }
