@@ -11,12 +11,15 @@ namespace VeiculosApp.Core.Domain.Commands
         {
             if (vehicle == null) throw new ArgumentNullException($"parameter {nameof(vehicle)} is null.");
             if (vehicle.Id > 0) throw new ArgumentOutOfRangeException($"parameter {nameof(vehicle)} could not be more than zero.");
-            if (string.IsNullOrWhiteSpace(vehicle.Name)) throw new ArgumentNullException($"parameter {nameof(vehicle.Name)} could not be null or empty.");
-            if (string.IsNullOrWhiteSpace(vehicle.Brand)) throw new ArgumentNullException($"parameter {nameof(vehicle.Brand)} could not be null or whitespace.");
-            if (string.IsNullOrWhiteSpace(vehicle.Name)) throw new ArgumentNullException($"parameter {nameof(vehicle.Name)} could not be null or empty.");
-            if (string.IsNullOrEmpty(vehicle.Brand)) throw new ArgumentNullException($"parameter {nameof(vehicle.Brand)} could not be null or empty.");
-
+            if (vehicle.Name == null) throw new ArgumentNullException($"parameter {nameof(vehicle.Name)} could not be null");
+            if (vehicle.Name == string.Empty) throw new ArgumentException($"parameter {nameof(vehicle.Name)} could not be empty.");
+            if (vehicle.Name == " ") throw new ArgumentException($"parameter {nameof(vehicle.Name)} could not be whitespace.");
+            if (vehicle.Brand == null) throw new ArgumentNullException($"parameter {nameof(vehicle.Brand)} could not be null");
+            if (vehicle.Brand == string.Empty) throw new ArgumentException($"parameter {nameof(vehicle.Brand)} could not be empty");
+            if (vehicle.Brand == " ") throw new ArgumentException($"parameter {nameof(vehicle.Brand)} could not be whitespace");
+            
             Vehicle = vehicle;
         }
     }
 }
+
