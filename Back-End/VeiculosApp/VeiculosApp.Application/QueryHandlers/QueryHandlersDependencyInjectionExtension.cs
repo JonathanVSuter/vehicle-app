@@ -16,12 +16,13 @@ namespace VeiculosApp.Application.QueryHandlers
             services.AddScoped<IQueryHandler<GetByIdVehicleQuery, Vehicle>, GetByIdVehicleQueryHandler>();
             services.AddScoped<IQueryHandler<GetByVehicleQuery, IList<Vehicle>>, GetByVehicleQueryHandler>();
             services.AddScoped<IQueryHandler<GetByIdAdvertisementImageQuery, AdvertisementImage>, GetByIdAnnouncementImageQueryHandler>();
-            services.AddScoped<IQueryHandler<GetByTermAnnouncementImageQuery, IList<AdvertisementImage>>, GetByTermAnnouncementImageQueryHandler>();
+            services.AddScoped<IQueryHandler<GetByTermAdvertisementImageQuery, IList<AdvertisementImage>>, GetByTermAdvertisementImageQueryHandler>();
             services.AddScoped<IQueryHandler<GetAllAnnouncementImagesQuery, IList<AdvertisementImage>>, GetAllAdvertisementImagesQueryHandler>();
             services.AddScoped<IQueryHandler<GetAllUsersQuery, IList<User>>, GetAllUsersQueryHandler>();
             services.AddScoped<IQueryHandler<GetByIdUserQuery, User>, GetByIdUserQueryHandler>();
             services.AddScoped<IQueryHandler<GetByTermUserQuery, IList<User>>, GetByTermUserQueryHandler>();
             services.AddScoped<IQueryHandler<LoginQuery, Task<LoginSucessDto>>, LoginQueryHandler>();
+            services.AddScoped<IQueryHandler<GetByTermAdvertisementQuery, IList<Advertisement>>, GetByTermAdvertisementQueryHandler>();
         }
     }
 }

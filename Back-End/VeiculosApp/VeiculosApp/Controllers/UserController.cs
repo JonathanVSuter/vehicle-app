@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Common.Query;
 using VeiculosApp.Core.Domain.Commands;
@@ -49,11 +50,11 @@ namespace VeiculosApp.Controllers
         }
         [Authorize(Roles = "ADMIN")]
         [HttpPost()]
-        public IActionResult Save([FromBody] SaveUserViewModel saveUserViewModel)
+        public async Task<IActionResult> Save([FromBody] SaveUserViewModel saveUserViewModel)
         {
             var user = _mapper.Map<User>(saveUserViewModel.User);
             var command = new SaveUserCommand(user);
-            _commandDispatcher.Dispatch(command);
+            await _commandDispatcher.DispatchAsync(command).ConfigureAwait(true);
 
             return CreatedAtAction(nameof(UserController.Save), nameof(UserController));
         }
@@ -87,7 +88,7 @@ namespace VeiculosApp.Controllers
             }
             return NoContent();
         }
-        [Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN,Normal")]
         [HttpGet()]
         [Route("getbyid")]
         public IActionResult GetById([FromQuery] int id)

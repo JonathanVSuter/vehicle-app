@@ -17,7 +17,7 @@ namespace VeiculosApp.Core.Domain.Commands
 
             foreach (var item in advertisementImages)
             {
-                if (item.Id >0) new ArgumentException($"parameter {nameof(advertisementImages)} must be zero.");
+                if (item.Id >0) throw new ArgumentException($"parameter {nameof(advertisementImages)} must be zero.");
                 if (item.IdAdvertisement <= 0) throw new ArgumentException($"parameter {nameof(advertisementImages)} must be greater than zero (0).");
                 if (item.Name == null) throw new ArgumentNullException($"parameter {nameof(item.Name)} at position {advertisementImages.IndexOf(item)} could not be null.");
                 if (item.Name == string.Empty) throw new ArgumentNullException($"parameter {nameof(item.Name)} at position {advertisementImages.IndexOf(item)} could not be empty.");

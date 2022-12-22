@@ -11,15 +11,13 @@ namespace VeiculosApp.Application.CommandHandlers
 {
     public class SaveAdvertisementCommandHandler : ICommandHandler<SaveAdvertisementCommand>
     {
-        private readonly IAdvertisementRepository _advertisementRepository;
-        private readonly IAdvertisementImageRepository _advertisementImageRepository;
+        private readonly IAdvertisementRepository _advertisementRepository;        
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IUserRepository _userRepository;
 
-        public SaveAdvertisementCommandHandler(IAdvertisementRepository advertisementRepository, IAdvertisementImageRepository advertisementImageRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
+        public SaveAdvertisementCommandHandler(IAdvertisementRepository advertisementRepository, IVehicleRepository vehicleRepository, IUserRepository userRepository)
         {
-            _advertisementRepository = advertisementRepository;
-            _advertisementImageRepository = advertisementImageRepository;
+            _advertisementRepository = advertisementRepository;            
             _vehicleRepository = vehicleRepository;
             _userRepository = userRepository;
         }

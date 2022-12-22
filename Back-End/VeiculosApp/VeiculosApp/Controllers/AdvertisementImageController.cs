@@ -58,8 +58,8 @@ namespace VeiculosApp.Controllers
         [Route("getby")]
         public IActionResult GetBy([FromQuery] string term)
         {
-            var query = new GetByTermAnnouncementImageQuery(term);
-            var vehicles = _queryExecutor.Execute<GetByTermAnnouncementImageQuery, IList<AdvertisementImage>>(query);
+            var query = new GetByTermAdvertisementImageQuery(term);
+            var vehicles = _queryExecutor.Execute<GetByTermAdvertisementImageQuery, IList<AdvertisementImage>>(query);
             if (vehicles != null && vehicles.Any())
             {
                 var result = _mapper.Map<IList<AdvertisementImageDto>>(vehicles);

@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VeiculosApp.Core.Common", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VeiculosApp.Application", "VeiculosApp.Application\VeiculosApp.Application.csproj", "{893CB11C-935B-433B-9C72-44F687746CF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeiculosApp.Infra.Services", "VeiculosApp.Infra.Services\VeiculosApp.Infra.Services.csproj", "{FF360443-D7E3-4EA9-99E6-CFDBEEB8D3CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VeiculosApp.Infra.Services", "VeiculosApp.Infra.Services\VeiculosApp.Infra.Services.csproj", "{FF360443-D7E3-4EA9-99E6-CFDBEEB8D3CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeiculosApp.Core.Tests", "VeiculosApp.Core.Tests\VeiculosApp.Core.Tests.csproj", "{C5CC302B-398A-490C-815D-81FB7DEF2C95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{FF360443-D7E3-4EA9-99E6-CFDBEEB8D3CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF360443-D7E3-4EA9-99E6-CFDBEEB8D3CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF360443-D7E3-4EA9-99E6-CFDBEEB8D3CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5CC302B-398A-490C-815D-81FB7DEF2C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5CC302B-398A-490C-815D-81FB7DEF2C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5CC302B-398A-490C-815D-81FB7DEF2C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5CC302B-398A-490C-815D-81FB7DEF2C95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
