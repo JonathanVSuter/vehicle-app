@@ -10,12 +10,12 @@ namespace VeiculosApp.Core.Tests.Commands
     public class SaveUserCommandTests
     {
         [Fact]
-        public void Test_Id_Greater_Than_Zero()
+        public void Test_Id_Equals_Zero()
         {
             var user = new User { Id = 0, Name = "Test User", Email = "test@email.com", Password = "password" };
             var command = new SaveUserCommand(user);
             
-            Assert.True(command.User.Id >= 0);
+            Assert.True(command.User.Id == 0);
         }
         [Theory]        
         [InlineData("")]

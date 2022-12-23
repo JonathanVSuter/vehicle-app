@@ -20,68 +20,80 @@ namespace VeiculosApp.Core.Tests.Commands
             IList<AdvertisementImage> advertisementImages = new List<AdvertisementImage>();
             Assert.Throws<ArgumentException>(() => new SaveAdvertisementImageCommand(advertisementImages));
         }
-        [Theory]
-        [InlineData(1, 0, null, new byte[] {})]
-        [InlineData(1, 0, "", new byte[] { })]
-        [InlineData(1, 0, "name", null)]
-        [InlineData(1, 0, "name", new byte[] {})]
-        [InlineData(1, 0, "name", new byte[] { 0, 1, 2 })]
-        [InlineData(1, 1, null, new byte[] { })]
-        [InlineData(1, 1, "", new byte[] { })]
-        [InlineData(1, 1, "name", null)]
-        [InlineData(1, 1, "name", new byte[] { })]
-        [InlineData(1, 1, "name", new byte[] { 0, 1, 2})]
-        public void SaveAdvertisementImageCommand_ShouldThrowArgumentException_WhenAdvertisementImagesIsInvalid(int id, int idAdvertisement, string name, byte[] photo)
-        {            
+        [Fact]
+        public void SaveAdvertisementImageCommand_ShouldThrowArgumentException_WhenIdIsGreaterThanZero()
+        {
             IList<AdvertisementImage> advertisementImages = new List<AdvertisementImage>
             {
                 new AdvertisementImage
                 {
-                    Id = id,
-                    IdAdvertisement = idAdvertisement,
-                    Name = name,
-                    Photo = photo
+                    Id = 1,
+                    IdAdvertisement = 1,
+                    Name = "Test",
+                    Photo = new byte[1]
                 }
             };
-            Assert.Throws<ArgumentException>(() => new SaveAdvertisementImageCommand(advertisementImages)); 
+            Assert.Throws<ArgumentException>(() => new SaveAdvertisementImageCommand(advertisementImages));
         }
         [Fact]
-        public void SaveAdvertisementImageCommand_ShouldCreateInstance_WhenAdvertisementImagesIsValid()
+        public void SaveAdvertisementImageCommand_ShouldThrowArgumentException_WhenIdAdvertisementIsLessThanOrEqualToZero()
         {
-            // Arrange
+            IList<AdvertisementImage> advertisementImages = new List<AdvertisementImage>
+            {
+                new AdvertisementImage
+                {
+                    Id = 0,
+                    IdAdvertisement = 0,
+                    Name = "Test",
+                    Photo = new byte[1]
+                }
+            };
+            Assert.Throws<ArgumentException>(() => new SaveAdvertisementImageCommand(advertisementImages));
+        }
+        [Fact]
+        public void SaveAdvertisementImageCommand_ShouldThrowArgumentNullException_WhenNameIsNull()
+        {
             IList<AdvertisementImage> advertisementImages = new List<AdvertisementImage>
             {
                 new AdvertisementImage
                 {
                     Id = 0,
                     IdAdvertisement = 1,
-                    Name = "name",
-                    Photo = new byte[] { 0, 1, 2}
+                    Name = null,
+                    Photo = new byte[1]
                 }
             };
-            
-            var command = new SaveAdvertisementImageCommand(advertisementImages);
-                        
-            Assert.IsType<SaveAdvertisementImageCommand>(command);
+            Assert.Throws<ArgumentNullException>(() => new SaveAdvertisementImageCommand(advertisementImages));
         }
         [Fact]
-        public void SaveAdvertisementImageCommand_ShouldNotThrownArgumentException_WhenAdvertisementImagesIsValid()
+        public void SaveAdvertisementImageCommand_ShouldThrowArgumentNullException_WhenNameIsEmpty()
         {
-            // Arrange
             IList<AdvertisementImage> advertisementImages = new List<AdvertisementImage>
             {
                 new AdvertisementImage
                 {
                     Id = 0,
                     IdAdvertisement = 1,
-                    Name = "name",
-                    Photo = new byte[] { 0, 1, 2}
+                    Name = string.Empty,
+                    Photo = new byte[1]
                 }
             };
-
-            var exception = Record.Exception(() => new SaveAdvertisementImageCommand(advertisementImages));
-
-            Assert.Null(exception);
+            Assert.Throws<ArgumentNullException>(() => new SaveAdvertisementImageCommand(advertisementImages));
         }
+        [Fact]
+        public void SaveAdvertisementImageCommand_ShouldThrowArgumentNullException_WhenPhotoIsNull()
+        {
+            IList<AdvertisementImage> advertisementImages = new List<AdvertisementImage>
+            {
+                new AdvertisementImage
+                {
+                    Id = 0,
+                    IdAdvertisement = 1,
+                    Name = "Test",
+                    Photo = null
+                }
+            };
+            Assert.Throws<ArgumentNullException>(() => new SaveAdvertisementImageCommand(advertisementImages));
+        }        
     }
 }

@@ -5,8 +5,7 @@ using VeiculosApp.Core.Common.Command;
 using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Commands
-{
-    //TODO: implement save announcement images on annoucement controller 
+{    
     public class SaveAdvertisementImageCommand : ICommand
     {        
         public IList<AdvertisementImage> AdvertisementImages { get; set; }

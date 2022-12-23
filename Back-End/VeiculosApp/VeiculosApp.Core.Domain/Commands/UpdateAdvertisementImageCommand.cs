@@ -13,14 +13,14 @@ namespace VeiculosApp.Core.Domain.Commands
         public UpdateAdvertisementImageCommand(IList<AdvertisementImage> advertisementImages)
         {
             if (advertisementImages == null) throw new ArgumentNullException($"parameter {nameof(advertisementImages)} could not be null.");
-            if (advertisementImages.Any()) throw new ArgumentException($"parameter {nameof(advertisementImages)}  must be at least one element.");            
+            if (!advertisementImages.Any()) throw new ArgumentException($"parameter {nameof(advertisementImages)}  must be at least one element.");            
 
             foreach (var item in advertisementImages)
             {
-                if (item.Id <= 0) new ArgumentException($"parameter {nameof(item.Id)} at position {advertisementImages.IndexOf(item)} must be greater than zero.");
+                if (item.Id <= 0) throw new ArgumentException($"parameter {nameof(item.Id)} at position {advertisementImages.IndexOf(item)} must be greater than zero.");
                 if (item.IdAdvertisement <= 0) throw new ArgumentException($"parameter {nameof(item.IdAdvertisement)} at position {advertisementImages.IndexOf(item)} must be greater than zero (0).");
                 if (item.Name == null) throw new ArgumentNullException($"parameter {nameof(item.Name)} at position {advertisementImages.IndexOf(item)} could not be null.");
-                if (item.Name == string.Empty) throw new ArgumentNullException($"parameter {nameof(item.Name)} at position {advertisementImages.IndexOf(item)} could not be empty.");
+                if (item.Name == string.Empty) throw new ArgumentException($"parameter {nameof(item.Name)} at position {advertisementImages.IndexOf(item)} could not be empty.");
                 if (item.Photo == null) throw new ArgumentNullException($"parameter {nameof(item.Photo)} at position {advertisementImages.IndexOf(item)} could not be null.");
                 if (item.Photo.Length <= 0) throw new ArgumentNullException($"parameter {nameof(item.Photo)} at position {advertisementImages.IndexOf(item)} could not be zero length.");
             }

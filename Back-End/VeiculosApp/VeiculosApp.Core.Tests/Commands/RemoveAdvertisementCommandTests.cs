@@ -7,25 +7,17 @@ namespace VeiculosApp.Core.Tests.Commands
     public class RemoveAdvertisementCommandTests
     {
         [Fact]
-        public void Constructor_WithValidId_SetsIdProperty()
-        {
-            // Arrange
-            int id = 1;
-
-            // Act
+        public void RemoveAdvertisementCommand_WithValidId_SetsIdProperty()
+        {            
+            int id = 1;            
             var command = new RemoveAdvertisementCommand(id);
-
-            // Assert
             Assert.Equal(id, command.Id);
         }
 
         [Fact]
-        public void Constructor_WithInvalidId_ThrowsArgumentOutOfRangeException()
+        public void RemoveAdvertisementCommand_WithInvalidId_ThrowsArgumentOutOfRangeException()
         {
-            // Arrange
             int id = 0;
-
-            // Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => new RemoveAdvertisementCommand(id));
         }
     }
