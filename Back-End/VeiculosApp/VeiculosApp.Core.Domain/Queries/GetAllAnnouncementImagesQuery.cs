@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using VeiculosApp.Core.Common.Query;
-using VeiculosApp.Core.Domain.Dtos;
 using VeiculosApp.Core.Domain.Models;
 
 namespace VeiculosApp.Core.Domain.Queries

@@ -30,6 +30,7 @@ namespace VeiculosApp.Controllers
             return Ok(result);
         }
 
+        //TODO: refresh token
         //[AllowAnonymous]
         //[HttpPost]
         //[Route("refresh")]

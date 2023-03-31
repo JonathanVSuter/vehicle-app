@@ -21,6 +21,7 @@ namespace VeiculosApp.Core.Domain.Commands
                 if (item.IdAdvertisement <= 0) throw new ArgumentException($"parameter {nameof(item.IdAdvertisement)} at position {advertisementImages.IndexOf(item)} must be greater than zero (0).");
                 if (item.Name == null) throw new ArgumentNullException($"parameter {nameof(item.Name)} at position {advertisementImages.IndexOf(item)} could not be null.");
                 if (item.Name == string.Empty) throw new ArgumentException($"parameter {nameof(item.Name)} at position {advertisementImages.IndexOf(item)} could not be empty.");
+                if (string.IsNullOrWhiteSpace(item.Name)) throw new ArgumentException($"parameter {nameof(item.Name)} at position {advertisementImages.IndexOf(item)} could not be whitespace.");
                 if (item.Photo == null) throw new ArgumentNullException($"parameter {nameof(item.Photo)} at position {advertisementImages.IndexOf(item)} could not be null.");
                 if (item.Photo.Length <= 0) throw new ArgumentNullException($"parameter {nameof(item.Photo)} at position {advertisementImages.IndexOf(item)} could not be zero length.");
             }

@@ -15,11 +15,11 @@ namespace VeiculosApp.Core.Domain.Queries
         public LoginQuery(string email, string password)
         {
             if (email == string.Empty) throw new ArgumentException($"User e-mail could not be empty.");
-            if (email == null) throw new ArgumentNullException($"User e-mail could not be null.");
             if (email == " ") throw new ArgumentException($"User e-mail could not be whitespace.");
-            if (password == string.Empty) throw new ArgumentException($"User password could not be empty.");
+            if (email == null) throw new ArgumentNullException($"User e-mail could not be null.");            
+            if (password == string.Empty) throw new ArgumentException($"User password could not be empty.");            
+            if (password == " ") throw new ArgumentException($"User password could not be whitespace.");
             if (password == null) throw new ArgumentNullException($"User password could not be null.");
-            if (Password == " ") throw new ArgumentException($"User password could not be whitespace.");
 
             Email = email;
             Password = password;

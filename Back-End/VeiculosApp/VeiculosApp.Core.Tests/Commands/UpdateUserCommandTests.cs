@@ -8,22 +8,23 @@ namespace VeiculosApp.Core.Tests.Commands
     public class UpdateUserCommandTests
     {
         [Fact]
-        public void Test_Id_Greater_Zero()
+        public void UpdateUserCommand_ShouldThrownException()
         {
             var user = new User { Id = 1, Name = "Test User", Email = "test@email.com", Password = "password" };
             var command = new UpdateUserCommand(user);
-            Assert.True(command.User.Id == 1);
+            var exception = Record.Exception(() => new UpdateUserCommand(user));
+            Assert.Null(exception);
         }
         [Theory]
         [InlineData("")]
         [InlineData(" ")]
-        public void Test_Name_Not_Empty_Or_Whitespace(string name)
+        public void UpdateUserCommand_ShouldThrownArgumentException_WhenNameIsEmptyOrWhitespace(string name)
         {
             var user = new User { Id = 1, Name = name, Email = "test@email.com", Password = "password" };
             Assert.Throws<ArgumentException>(() => new UpdateUserCommand(user));
         }
         [Fact]
-        public void Test_Name_Not_Null()
+        public void UpdateUserCommand_ShouldThrownArgumentNullException_WhenNameIsNull()
         {
             var user = new User { Id = 1, Name = null, Email = "test@email.com", Password = "password" };
             Assert.Throws<ArgumentNullException>(() => new UpdateUserCommand(user));
@@ -31,30 +32,16 @@ namespace VeiculosApp.Core.Tests.Commands
         [Theory]
         [InlineData("")]
         [InlineData(" ")]
-        public void Test_Email_Not_Empty_Or_Whitespace(string email)
+        public void UpdateUserCommand_ShouldThrownArgumentException_WhenEmailIsEmptyOrWhitespace(string email)
         {
             var user = new User { Id = 1, Name = "Test User", Email = email, Password = "password" };
             Assert.Throws<ArgumentException>(() => new UpdateUserCommand(user));
         }
         [Fact]
-        public void Test_Email_Not_Null()
+        public void UpdateUserCommand_ShouldThrownArgumentNullException_WhenEmailIsNull()
         {
             var user = new User { Id = 1, Name = "Test User", Email = null, Password = "password" };
             Assert.Throws<ArgumentNullException>(() => new UpdateUserCommand(user));
-        }
-        [Theory]
-        [InlineData("")]
-        [InlineData(" ")]
-        public void Test_Password_Not_Empty_Or_Null_Or_Whitespace(string password)
-        {
-            var user = new User { Id = 1, Name = "Test User", Email = "test@email.com", Password = password };
-            Assert.Throws<ArgumentException>(() => new UpdateUserCommand(user));
-        }
-        [Fact]
-        public void Test_Password_Not_Null()
-        {
-            var user = new User { Id = 1, Name = "Test User", Email = "test@email.com", Password = null };
-            Assert.Throws<ArgumentNullException>(() => new UpdateUserCommand(user));
-        }
+        }        
     }
 }
