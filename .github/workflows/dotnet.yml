@@ -23,5 +23,5 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore Back-End/VeiculosApp/VeiculosApp/VeiculosApp.csproj
     - name: Build
-      run: dotnet build Back-End/VeiculosApp/VeiculosApp/VeiculosApp.csproj --no-restore
+      run: dotnet build Back-End/VeiculosApp/VeiculosApp/VeiculosApp.csproj -c Release --no-restore
   
