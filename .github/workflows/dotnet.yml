@@ -20,13 +20,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-    - name: Subir diretorio
-      run: cd Back-End/VeiculosApp/VeiculosApp/VeiculosApp.csproj
-    - name: Ver itens no diretorio
-      run: ls -a            
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Back-End/VeiculosApp/VeiculosApp/VeiculosApp.csproj
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build Back-End/VeiculosApp/VeiculosApp/VeiculosApp.csproj --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
