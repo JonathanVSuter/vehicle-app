@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: dotnet build Back-End/VeiculosApp/VeiculosApp/VeiculosApp.csproj --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test Back-End/VeiculosApp/VeiculosApp.Core.Tests/VeiculosApp.Core.Tests.csproj --no-build --verbosity normal
